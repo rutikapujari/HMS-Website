@@ -155,156 +155,183 @@ export default function Features() {
 
 
       {/* ================= FEATURES ================= */}
-      <section className="bg-gradient-to-br from-[#023042] via-[#053C50] to-[#023042] py-28 text-white">
-  <div className="max-w-7xl mx-auto px-6">
+      <section className="relative py-40 bg-[radial-gradient(ellipse_at_top,#041826_0%,#020b12_45%,#01070b_100%)] text-white overflow-hidden">
 
-    <motion.h2
-      initial="hidden"
-      whileInView="visible"
+  {/* ambient orbs */}
+  <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-cyan-500/15 blur-[220px] rounded-full" />
+  <div className="pointer-events-none absolute bottom-0 right-0 w-[700px] h-[700px] bg-orange-500/15 blur-[200px] rounded-full" />
+
+  <div className="relative max-w-7xl mx-auto px-6">
+
+    {/* SECTION HEADER */}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      variants={fadeUp}
-      className="text-4xl md:text-5xl font-extrabold text-center mb-32"
+      transition={{ duration: 0.8 }}
+      className="text-center mb-44"
     >
-      Our <span className="text-[#C85038]">Powerful Capabilities</span>
-    </motion.h2>
+      <p className="uppercase tracking-[0.3em] text-cyan-300/70 mb-6">
+        What makes us different
+      </p>
+      <h2 className="text-5xl md:text-7xl font-black leading-tight">
+        Our{" "}
+        <span className="bg-gradient-to-r from-cyan-300 via-teal-300 to-orange-400 bg-clip-text text-transparent">
+          Powerful Capabilities
+        </span>
+      </h2>
+    </motion.div>
 
-    {/* SMART AUTOMATION */}
+    {/* SMART AUTOMATION – timeline cards */}
     <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
       variants={stagger}
-      className="mb-40"
+      className="mb-52"
     >
-      <h3 className="text-4xl font-extrabold text-center mb-12 text-[#C85038]">
+      <h3 className="text-4xl font-extrabold mb-24 text-cyan-300">
         {smartAutomation.title}
       </h3>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="relative border-l border-white/10 pl-12 space-y-16">
         {smartAutomation.desc.map((item, i) => (
           <motion.div
             key={i}
             variants={fadeUp}
-            whileHover={{ y: -8, scale: 1.03 }}
-            className="bg-[#053C50]/80 rounded-3xl p-8 text-center
-              border border-[#04748B]/40 hover:border-[#C85038]/50 transition"
+            whileHover={{ x: 10 }}
+            className="relative"
           >
-            <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center
-              rounded-full bg-gradient-to-r from-[#04748B] to-[#053C50] text-xl">
-              ⚙️
+            <span className="absolute -left-[33px] top-2 w-4 h-4 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400" />
+
+            <div className="bg-[#031c28]/80 p-10 rounded-[28px] border border-white/10 backdrop-blur-xl">
+              <div className="flex items-center gap-6">
+                <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-cyan-400/20 text-2xl">
+                  ⚙️
+                </div>
+                <p className="text-slate-200 text-lg leading-relaxed">
+                  {item}
+                </p>
+              </div>
             </div>
-            <p className="text-[#D6E3EA]">{item}</p>
           </motion.div>
         ))}
       </div>
     </motion.div>
 
-    {/* USER FRIENDLY */}
+    {/* USER FRIENDLY – glass feature tiles */}
     <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
       variants={stagger}
-      className="mb-40"
+      className="mb-56"
     >
-      <h3 className="text-4xl font-extrabold text-center mb-12 text-[#C85038]">
+      <h3 className="text-4xl font-extrabold text-center mb-28 text-orange-300">
         {userFriendly.title}
       </h3>
 
-      <div className="grid sm:grid-cols-3 gap-10">
+      <div className="grid md:grid-cols-3 gap-20">
         {userFriendly.desc.map((item, i) => (
           <motion.div
             key={i}
             variants={fadeUp}
-            whileHover={{ scale: 1.05 }}
-            className="bg-[#053C50]/80 rounded-3xl p-12 text-center
-              border border-[#04748B]/40"
+            whileHover={{ y: -20 }}
+            className="relative group"
           >
-            <div className="text-4xl mb-4 text-[#C85038]">✨</div>
-            <h4 className="font-bold text-lg">{item}</h4>
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-400/30 to-cyan-400/30 blur-2xl opacity-40 group-hover:opacity-80 transition" />
+            <div className="relative bg-[#020f16]/80 rounded-[36px] p-16 border border-white/10 backdrop-blur-xl text-center">
+              <div className="text-6xl mb-8">✨</div>
+              <h4 className="text-2xl font-bold">{item}</h4>
+            </div>
           </motion.div>
         ))}
       </div>
     </motion.div>
 
-    {/* SECURITY */}
+    {/* SECURITY – dashboard style */}
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      initial={{ opacity: 0, scale: 0.96 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      variants={fadeUp}
-      className="mb-40 grid md:grid-cols-2 gap-16
-        bg-[#053C50]/60 p-16 rounded-3xl border border-[#04748B]/40"
+      transition={{ duration: 0.8 }}
+      className="mb-56 grid lg:grid-cols-3 gap-20 bg-[#031c28]/80 p-24 rounded-[56px] border border-white/10 backdrop-blur-xl"
     >
-      <div>
-        <span className="inline-block mb-6 px-6 py-3 rounded-full
-          bg-[#053C50] border border-[#04748B]/50 text-[#C85038] font-semibold">
+      <div className="lg:col-span-1">
+        <span className="inline-block mb-10 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-400/20 to-orange-400/20 border border-white/20 text-orange-300 font-semibold">
           🔐 Enterprise Security
         </span>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-10">
           {[
             ["Encryption", "256-bit"],
             ["Uptime", "99.99%"],
             ["Roles", "Multi-level"],
             ["Compliance", "HIPAA"],
           ].map(([label, value], i) => (
-            <div key={i} className="bg-[#023042]/70 p-6 rounded-2xl">
-              <p className="text-[#9FB7C3]">{label}</p>
-              <p className="text-xl font-bold text-white">{value}</p>
+            <div
+              key={i}
+              className="bg-[#020f16]/70 p-8 rounded-3xl border border-white/10"
+            >
+              <p className="text-slate-400">{label}</p>
+              <p className="text-3xl font-black">{value}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <div>
-        <h3 className="text-4xl font-extrabold mb-8 text-[#C85038]">
+      <div className="lg:col-span-2 flex flex-col justify-center">
+        <h3 className="text-5xl font-extrabold mb-14 text-orange-300">
           {security.title}
         </h3>
-        <ul className="space-y-5">
+
+        <ul className="grid sm:grid-cols-2 gap-8">
           {security.desc.map((item, i) => (
-            <li key={i} className="flex gap-3 text-[#D6E3EA]">
-              ✔ <span>{item}</span>
+            <li key={i} className="flex gap-4 text-lg">
+              <span className="text-cyan-300 text-2xl">✔</span>
+              <span className="text-slate-200">{item}</span>
             </li>
           ))}
         </ul>
       </div>
     </motion.div>
 
-    {/* PLATFORM */}
-    <div className="mb-40">
-      <h3 className="text-4xl font-extrabold text-center mb-16 text-[#C85038]">
+    {/* PLATFORM – neon pills */}
+    <div className="mb-56">
+      <h3 className="text-4xl font-extrabold text-center mb-28 text-cyan-300">
         {platforms.title}
       </h3>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="flex flex-wrap justify-center gap-10">
         {["🌐 Web", "🤖 Android", "📱 iPhone", "🖥️ Windows"].map((p, i) => (
           <div
             key={i}
-            className="bg-[#053C50]/80 border border-[#04748B]/40
-              rounded-3xl p-12 text-center hover:scale-105 transition"
+            className="relative px-14 py-10 rounded-full bg-[#020f16]/80 border border-white/10 backdrop-blur-xl text-2xl font-bold hover:scale-110 transition"
           >
-            <h4 className="text-xl font-bold">{p}</h4>
+            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/20 to-orange-400/20 blur-xl opacity-60" />
+            <span className="relative">{p}</span>
           </div>
         ))}
       </div>
     </div>
 
-    {/* REPORTING */}
-    <div className="bg-[#053C50]/60 rounded-3xl p-16 border border-[#04748B]/40">
-      <h3 className="text-4xl font-extrabold text-center mb-14 text-[#C85038]">
+    {/* REPORTING – stacked analytics cards */}
+    <div className="relative bg-[#031c28]/80 rounded-[56px] p-24 border border-white/10 backdrop-blur-xl">
+      <h3 className="text-4xl font-extrabold text-center mb-32 text-orange-300">
         {reporting.title}
       </h3>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-20">
         {reporting.desc.map((item, i) => (
           <div
             key={i}
-            className="bg-[#023042]/70 rounded-3xl p-10 text-center
-              border border-[#04748B]/40 hover:-translate-y-2 transition"
+            className="relative group"
           >
-            <div className="text-4xl mb-4 text-[#C85038]">📊</div>
-            <h4 className="font-bold text-lg">{item}</h4>
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-400/30 to-cyan-400/30 blur-2xl opacity-30 group-hover:opacity-70 transition" />
+            <div className="relative bg-[#020f16]/80 rounded-[36px] p-16 border border-white/10 text-center hover:-translate-y-6 transition">
+              <div className="text-6xl mb-8">📊</div>
+              <h4 className="text-xl font-bold">{item}</h4>
+            </div>
           </div>
         ))}
       </div>
@@ -312,6 +339,7 @@ export default function Features() {
 
   </div>
 </section>
+
 
     </>
   );

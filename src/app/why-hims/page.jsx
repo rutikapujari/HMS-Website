@@ -172,45 +172,73 @@ function PainPoints() {
   ];
 
   return (
-    <section className="py-28 relative overflow-hidden">
-      {/* Decorative glow */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#04748B]/20 blur-3xl"></div>
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#C85038]/20 blur-3xl"></div>
+    <section className="relative py-32 overflow-hidden">
+      {/* Background texture + glow */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#ffffff,transparent_40%,#ffffff)]"></div>
+      <div className="absolute top-0 left-1/2 w-[50rem] h-[50rem] -translate-x-1/2 bg-[#04748B]/15 blur-[180px] rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-[40rem] h-[40rem] bg-[#C85038]/15 blur-[160px] rounded-full"></div>
 
-      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-        <p className="text-[#04748B] font-semibold mb-3 tracking-wide">
-          Challenges Hospitals Face
-        </p>
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-24"
+        >
+          <p className="text-[#04748B] font-semibold tracking-widest uppercase mb-4">
+            Where Hospitals Struggle
+          </p>
+          <h2 className="text-4xl md:text-6xl font-extrabold text-[#023042]">
+            Real-World <span className="text-[#C85038]">Operational Pain</span>
+          </h2>
+        </motion.div>
 
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-14 text-[#023042]">
-          Common <span className="text-[#C85038]">Pain Points</span>
-        </h2>
-
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-10">
+        {/* Step style layout */}
+        <div className="relative flex flex-col gap-20">
           {painCards.map((card, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -80 : 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -6 }}
-              className="bg-white/80 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl 
-                         flex flex-col items-center text-center gap-4 
-                         border border-black/10 transition-all duration-300"
+              transition={{ duration: 0.7, delay: index * 0.15 }}
+              className={`relative flex flex-col md:flex-row ${
+                index % 2 !== 0 ? "md:flex-row-reverse" : ""
+              } items-center gap-12`}
             >
-              {/* Icon */}
-              <div
-                className={`w-20 h-20 rounded-full bg-gradient-to-tr ${card.gradient}
-                flex items-center justify-center text-4xl text-white shadow-xl mb-4`}
-              >
-                {card.icon}
+              {/* Number rail */}
+              <div className="absolute left-1/2 -top-12 -translate-x-1/2 md:hidden text-6xl font-black text-black/5">
+                {index + 1}
               </div>
 
-              <h3 className="text-xl md:text-2xl font-bold text-[#023042] mb-2">
-                {card.title}
-              </h3>
+              {/* Icon block */}
+              <div
+                className={`shrink-0 w-36 h-36 rounded-[2.5rem]
+                bg-gradient-to-br ${card.gradient}
+                flex items-center justify-center text-6xl text-white
+                shadow-[0_30px_60px_-15px_rgba(0,0,0,0.35)]
+                relative`}
+              >
+                {card.icon}
+                <span className="absolute inset-0 rounded-[2.5rem] ring-2 ring-white/30"></span>
+              </div>
 
-              <p className="text-gray-600">{card.text}</p>
+              {/* Content */}
+              <div className="relative bg-white/80 backdrop-blur-2xl border border-black/10 rounded-[2.5rem] p-10 shadow-2xl max-w-xl">
+                <span className="absolute -top-6 -left-6 hidden md:flex w-14 h-14 rounded-full bg-[#023042] text-white items-center justify-center font-bold text-xl shadow-xl">
+                  {index + 1}
+                </span>
+
+                <h3 className="text-2xl md:text-3xl font-extrabold text-[#023042] mb-4">
+                  {card.title}
+                </h3>
+
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  {card.text}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -219,90 +247,125 @@ function PainPoints() {
   );
 }
 
+
 /* ================= WHY HIMS ================= */
 
 function WhyHims() {
-  return (
-    <section className="py-28 relative overflow-hidden bg-[#F8FBFC]">
-      {/* Decorative soft glows */}
-      <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-[#04748B]/10 blur-3xl"></div>
-      <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-[#C85038]/10 blur-3xl"></div>
+  const items = [
+    {
+      icon: "💻",
+      title: "Complete Digitization",
+      desc: "End-to-end hospital workflows with zero paperwork.",
+      color: "from-[#053C50] to-[#04748B]",
+      side: "left",
+    },
+    {
+      icon: "📊",
+      title: "Smart Analytics",
+      desc: "Live dashboards for faster, confident management decisions.",
+      color: "from-[#04748B] to-[#053C50]",
+      side: "right",
+    },
+    {
+      icon: "🔐",
+      title: "Secure & Compliant",
+      desc: "ABHA ready, role-based access & encrypted data.",
+      color: "from-[#023042] to-[#053C50]",
+      side: "left",
+    },
+    {
+      icon: "⚡",
+      title: "Faster Operations",
+      desc: "Drastically reduce patient waiting time.",
+      color: "from-[#C85038] to-[#9C4436]",
+      side: "right",
+    },
+    {
+      icon: "🚀",
+      title: "Scalable Growth",
+      desc: "Works seamlessly from clinics to hospital chains.",
+      color: "from-[#053C50] to-[#023042]",
+      side: "left",
+    },
+  ];
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center">
-          <p className="text-[#04748B] font-semibold mb-3 tracking-wide">
-            One platform. Total control.
+  return (
+    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-[#F8FBFC] via-white to-[#EEF5F7]">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#04748B14_1px,transparent_1px),linear-gradient(to_bottom,#04748B14_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+
+      {/* Ambient glows */}
+      <div className="absolute top-1/3 left-0 w-[30rem] h-[30rem] bg-[#04748B]/20 blur-[140px] rounded-full"></div>
+      <div className="absolute bottom-1/4 right-0 w-[30rem] h-[30rem] bg-[#C85038]/20 blur-[140px] rounded-full"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Heading */}
+        <div className="text-center max-w-3xl mx-auto">
+          <p className="inline-block px-5 py-1.5 rounded-full bg-[#04748B]/10 text-[#04748B] font-semibold tracking-wide mb-5">
+            One Platform. Total Control.
           </p>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#053C50]">
-            How <span className="text-[#C85038]">HIMS</span> Solves This
+
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#053C50] leading-tight">
+            Why Hospitals Choose{" "}
+            <span className="text-[#C85038]">HIMS</span>
           </h2>
+
+          <p className="mt-6 text-lg text-[#023042]/80">
+            Designed to eliminate complexity, improve efficiency, and scale
+            healthcare operations intelligently.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
-          <WhyCard
-            icon="💻"
-            title="Complete Digitization"
-            desc="End-to-end hospital workflows with zero paperwork."
-            color="from-[#053C50] to-[#04748B]"
-          />
-          <WhyCard
-            icon="📊"
-            title="Smart Analytics"
-            desc="Live dashboards for management decisions."
-            color="from-[#04748B] to-[#053C50]"
-          />
-          <WhyCard
-            icon="🔐"
-            title="Secure & Compliant"
-            desc="ABHA ready, role-based access & encrypted data."
-            color="from-[#023042] to-[#053C50]"
-          />
-          <WhyCard
-            icon="⚡"
-            title="Faster Operations"
-            desc="Reduce patient waiting time drastically."
-            color="from-[#C85038] to-[#9C4436]"
-          />
-          <WhyCard
-            icon="🚀"
-            title="Scalable Growth"
-            desc="Works for clinics to hospital chains."
-            color="from-[#053C50] to-[#023042]"
-          />
+        {/* Vertical journey layout */}
+        <div className="relative mt-24">
+          <div className="absolute left-1/2 top-0 h-full w-[2px] bg-gradient-to-b from-[#04748B]/30 via-[#053C50]/30 to-[#C85038]/30 hidden md:block"></div>
+
+          <div className="flex flex-col gap-20">
+            {items.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`flex flex-col md:flex-row items-center gap-12 ${
+                  item.side === "right" ? "md:flex-row-reverse" : ""
+                }`}
+              >
+                {/* Icon node */}
+                <motion.div
+                  whileHover={{ scale: 1.15, rotate: 8 }}
+                  className={`relative w-28 h-28 rounded-full bg-gradient-to-tr ${item.color}
+                              flex items-center justify-center text-5xl text-white shadow-2xl`}
+                >
+                  {item.icon}
+                  <div className="absolute inset-0 rounded-full bg-white/20 blur-xl"></div>
+                </motion.div>
+
+                {/* Content card */}
+                <div
+                  className="bg-white/80 backdrop-blur-xl rounded-3xl p-10 
+                             shadow-xl border border-[#053C50]/10 max-w-xl"
+                >
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#053C50] mb-4">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-[#023042]/80 text-lg leading-relaxed">
+                    {item.desc}
+                  </p>
+
+                  <div className="mt-6 h-[3px] w-24 bg-gradient-to-r from-[#04748B] to-[#C85038] rounded-full"></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function WhyCard({ icon, title, desc, color }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -10, scale: 1.05 }}
-      className="bg-white rounded-3xl p-8 shadow-xl 
-                 flex flex-col items-center text-center gap-4 
-                 cursor-pointer transition-all duration-300 
-                 border border-[#053C50]/10"
-    >
-      {/* Icon */}
-      <div
-        className={`w-20 h-20 rounded-full bg-gradient-to-tr ${color}
-        flex items-center justify-center text-4xl text-white shadow-lg mb-4`}
-      >
-        {icon}
-      </div>
-
-      <h3 className="text-xl md:text-2xl font-bold text-[#053C50] mb-2">
-        {title}
-      </h3>
-
-      <p className="text-[#023042]/80">{desc}</p>
-    </motion.div>
-  );
-}
 
 /* ================= AI SECTION ================= */
 
@@ -312,75 +375,99 @@ function AISection() {
       icon: "🤖",
       title: "Smart Automation",
       desc: "Automated billing, discharge summaries and alerts.",
-      color: "from-[#04748B] to-[#053C50]",
+      glow: "bg-[#04748B]",
     },
     {
       icon: "🧠",
       title: "Predictive Insights",
       desc: "Identify trends, revenue leaks and patient behavior.",
-      color: "from-[#053C50] to-[#023042]",
+      glow: "bg-[#053C50]",
     },
     {
       icon: "⚙️",
       title: "Decision Support",
       desc: "AI dashboards for faster management decisions.",
-      color: "from-[#C85038] to-[#9C4436]",
+      glow: "bg-[#C85038]",
     },
   ];
 
   return (
-    <section className="py-28 relative overflow-hidden bg-[#F8FBFC]">
-      {/* Soft futuristic glows */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#04748B]/15 blur-3xl"></div>
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#C85038]/15 blur-3xl"></div>
+    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-[#F8FBFC] via-white to-[#F1F7F9]">
+      {/* Animated background grid */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,#04748B1A_1px,transparent_0)] bg-[size:28px_28px] opacity-40"></div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center">
-          <p className="text-[#04748B] font-semibold mb-3 tracking-wide">
-            Built for the Future
+      {/* Floating gradients */}
+      <div className="absolute top-1/4 left-1/3 w-[28rem] h-[28rem] bg-[#04748B]/20 rounded-full blur-[140px]"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[26rem] h-[26rem] bg-[#C85038]/20 rounded-full blur-[140px]"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto">
+          <p className="inline-block px-4 py-1 rounded-full bg-[#04748B]/10 text-[#04748B] font-semibold tracking-wide mb-4">
+            AI That Works for You
           </p>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#053C50]">
-            AI-Powered{" "}
-            <span className="text-[#C85038]">Hospital Intelligence</span>
+
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#053C50] leading-tight">
+            Intelligence That <br />
+            <span className="text-[#C85038]">Runs Your Hospital</span>
           </h2>
+
+          <p className="mt-6 text-lg text-[#023042]/80">
+            Move beyond software. Leverage AI that automates operations,
+            predicts outcomes, and empowers leadership.
+          </p>
         </div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-10 mt-16">
-          {cards.map((card, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -8 }}
-              className="bg-white rounded-3xl p-8 shadow-xl
-                         flex flex-col items-center text-center gap-4
-                         cursor-pointer transition-all duration-300
-                         border border-[#053C50]/10"
-            >
-              {/* Icon */}
-              <div
-                className={`w-20 h-20 rounded-full bg-gradient-to-tr ${card.color}
-                flex items-center justify-center text-4xl text-white shadow-lg mb-4`}
+        {/* Timeline-style cards */}
+        <div className="relative mt-24">
+          <div className="absolute left-1/2 top-0 h-full w-[2px] bg-gradient-to-b from-[#04748B]/40 via-[#053C50]/40 to-[#C85038]/40 hidden md:block"></div>
+
+          <div className="flex flex-col gap-20">
+            {cards.map((card, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`flex flex-col md:flex-row items-center gap-10 ${
+                  index % 2 === 0 ? "md:flex-row-reverse" : ""
+                }`}
               >
-                {card.icon}
-              </div>
+                {/* Icon bubble */}
+                <motion.div
+                  whileHover={{ scale: 1.15, rotate: 6 }}
+                  className={`relative w-28 h-28 rounded-full ${card.glow}
+                              flex items-center justify-center text-5xl text-white shadow-2xl`}
+                >
+                  {card.icon}
+                  <div className="absolute inset-0 rounded-full blur-xl opacity-60 bg-white/20"></div>
+                </motion.div>
 
-              <h3 className="text-xl md:text-2xl font-bold text-[#053C50] mb-2">
-                {card.title}
-              </h3>
+                {/* Content */}
+                <div className="bg-white/80 backdrop-blur-xl border border-[#053C50]/10 
+                                rounded-3xl p-8 md:p-10 shadow-xl max-w-xl">
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#053C50] mb-4">
+                    {card.title}
+                  </h3>
 
-              <p className="text-[#023042]/80">{card.desc}</p>
-            </motion.div>
-          ))}
+                  <p className="text-[#023042]/80 text-lg leading-relaxed">
+                    {card.desc}
+                  </p>
+
+                  <div className="mt-6 h-[3px] w-20 bg-gradient-to-r from-[#04748B] to-[#C85038] rounded-full"></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-/* ================= PROCESS SECTION ================= */
 
+/* ================= PROCESS SECTION ================= */
 function ProcessSection() {
   const steps = [
     {
@@ -410,56 +497,94 @@ function ProcessSection() {
   ];
 
   return (
-    <section className="relative py-28 bg-[#023042] overflow-hidden">
-      {/* Decorative glows */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#04748B]/30 blur-[140px] rounded-full" />
-      <div className="absolute -bottom-40 -right-40 w-[32rem] h-[32rem] bg-[#053C50]/40 blur-[160px] rounded-full" />
+    <section className="relative py-36 bg-gradient-to-br from-[#020f16] via-[#032536] to-[#020f16] overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-        <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-20">
-          How <span className="text-[#C85038]">HIMS</span> Works
+      {/* Animated background glow */}
+      <div className="absolute w-[700px] h-[700px] bg-cyan-400/20 blur-[180px] -top-40 -left-40 rounded-full" />
+      <div className="absolute w-[700px] h-[700px] bg-orange-400/20 blur-[180px] -bottom-40 -right-40 rounded-full" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+        <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-28 text-center">
+          How{" "}
+          <span className="bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent">
+            HIMS
+          </span>{" "}
+          Works
         </h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -12, scale: 1.05 }}
-              transition={{ duration: 0.4 }}
-              className="bg-white/10 backdrop-blur-xl border border-white/10
-              rounded-3xl p-8 shadow-2xl flex flex-col items-center gap-4
-              cursor-pointer hover:border-[#C85038]/40"
-            >
-              {/* Step Number */}
-              <div
-                className="w-16 h-16 rounded-full bg-gradient-to-tr
-                from-[#C85038] to-[#9C4436]
-                flex items-center justify-center
-                text-white text-xl font-black shadow-lg"
+        {/* Timeline Line */}
+        <div className="relative">
+
+          <div className="hidden md:block absolute left-1/2 top-0 w-[3px] h-full bg-gradient-to-b from-cyan-400 via-orange-400 to-cyan-400 opacity-40 -translate-x-1/2"></div>
+
+          <div className="flex flex-col gap-28">
+
+            {steps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 80 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.6 }}
+                className={`relative flex flex-col md:flex-row items-center gap-16 ${
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
               >
-                {step.number}
-              </div>
 
-              {/* Icon */}
-              <div className="text-4xl mt-2">{step.icon}</div>
+                {/* Center Dot */}
+                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-20 h-20 rounded-full 
+                  bg-gradient-to-tr from-cyan-400 to-orange-400 items-center justify-center
+                  text-black font-black text-xl shadow-2xl z-10">
+                  {step.number}
+                </div>
 
-              {/* Title */}
-              <h3 className="text-xl font-bold text-white">{step.title}</h3>
+                {/* Card */}
+                <div
+                  className="group relative md:w-[45%] bg-[#031c28]/80 backdrop-blur-xl
+                  border border-white/10 rounded-[40px] p-14 shadow-2xl
+                  hover:-translate-y-4 transition-all duration-700 overflow-hidden"
+                >
 
-              {/* Text */}
-              <p className="text-white/70 text-center leading-relaxed">
-                {step.text}
-              </p>
-            </motion.div>
-          ))}
+                  {/* Hover glow */}
+                  <div className="absolute -inset-6 bg-gradient-to-r from-cyan-400/20 to-orange-400/20 blur-3xl opacity-0 group-hover:opacity-100 transition"></div>
+
+                  <div className="relative z-10 text-center md:text-left">
+
+                    {/* Mobile number */}
+                    <div className="md:hidden w-16 h-16 mx-auto mb-6 rounded-full
+                      bg-gradient-to-tr from-cyan-400 to-orange-400
+                      flex items-center justify-center text-black font-black text-xl shadow-lg">
+                      {step.number}
+                    </div>
+
+                    {/* Icon */}
+                    <div className="text-6xl mb-6">{step.icon}</div>
+
+                    {/* Title */}
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                      {step.title}
+                    </h3>
+
+                    {/* Text */}
+                    <p className="text-slate-300 leading-relaxed text-lg">
+                      {step.text}
+                    </p>
+                  </div>
+                </div>
+
+              </motion.div>
+            ))}
+
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
+
 
 /* ================= WHO IT'S FOR ================= */
 
@@ -472,45 +597,73 @@ function WhoItsFor() {
   ];
 
   return (
-    <section className="relative py-28 overflow-hidden">
-      {/* Soft glow decorations (no base bg) */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#04748B]/25 blur-[140px] rounded-full" />
-      <div className="absolute -bottom-40 -right-40 w-[30rem] h-[30rem] bg-[#053C50]/25 blur-[160px] rounded-full" />
+    <section className="relative py-32 overflow-hidden">
+      {/* Background mesh glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#04748B20,transparent_40%),radial-gradient(circle_at_bottom_right,#C8503820,transparent_45%)]" />
+      <div className="absolute top-1/2 left-1/2 w-[40rem] h-[40rem] -translate-x-1/2 -translate-y-1/2 bg-[#053C50]/10 blur-[160px] rounded-full" />
 
-      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-        <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-16">
-          Built For <span className="text-[#C85038]">Every</span> Healthcare
-          Provider
-        </h2>
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-24"
+        >
+          <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900">
+            Designed For{" "}
+            <span className="bg-gradient-to-r from-[#04748B] to-[#C85038] bg-clip-text text-transparent">
+              Every Care Ecosystem
+            </span>
+          </h2>
+          <p className="mt-6 max-w-2xl mx-auto text-gray-600 text-lg">
+            Scalable healthcare technology built to adapt across organizations,
+            sizes, and specialties.
+          </p>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+        {/* Cards */}
+        <div className="grid md:grid-cols-2 gap-16">
           {items.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.06 }}
-              transition={{ duration: 0.4 }}
-              className="bg-white/70 backdrop-blur-xl
-              border border-gray-200
-              rounded-3xl p-10 shadow-2xl
-              flex flex-col items-center gap-5
-              cursor-pointer hover:border-[#C85038]/40"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ scale: 1.04 }}
+              className="relative group"
             >
-              {/* Icon Circle */}
-              <div
-                className="w-20 h-20 rounded-full flex items-center justify-center text-4xl
-                bg-gradient-to-tr from-[#04748B] to-[#053C50]
-                shadow-lg"
-              >
-                {item.icon}
-              </div>
+              {/* Gradient border */}
+              <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-r from-[#04748B] via-[#C85038] to-[#053C50] opacity-0 group-hover:opacity-100 transition duration-500 blur-sm" />
 
-              {/* Text */}
-              <p className="font-bold text-lg text-gray-800 tracking-wide">
-                {item.text}
-              </p>
+              {/* Card */}
+              <div
+                className="relative rounded-[2.5rem] p-12 bg-white/80 backdrop-blur-xl
+                border border-gray-200 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.25)]
+                flex items-center gap-8"
+              >
+                {/* Icon */}
+                <div
+                  className="relative w-24 h-24 flex items-center justify-center rounded-full text-5xl
+                  bg-gradient-to-br from-[#04748B] to-[#053C50] text-white shadow-2xl"
+                >
+                  {item.icon}
+                  <span className="absolute inset-0 rounded-full ring-2 ring-white/30 animate-pulse" />
+                </div>
+
+                {/* Text */}
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">
+                    {item.text}
+                  </h3>
+                  <p className="mt-2 text-gray-600">
+                    Smart workflows, compliance-ready infrastructure, and
+                    real-time insights tailored for {item.text.toLowerCase()}.
+                  </p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

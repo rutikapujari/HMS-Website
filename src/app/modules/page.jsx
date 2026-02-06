@@ -123,63 +123,66 @@ function PatientManagement() {
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Soft floating glows */}
-      <div className="absolute -top-40 -left-40 w-[480px] h-[480px] bg-[#04748B]/15 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -right-40 w-[480px] h-[480px] bg-[#C85038]/15 rounded-full blur-3xl"></div>
+    <section className="relative py-28 bg-gradient-to-b from-[#F5FAFC] to-white overflow-hidden">
+      {/* background accents */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#04748B]/20 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#C85038]/20 rounded-full blur-[120px]" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <h2 className="text-5xl font-extrabold text-center mb-20 text-[#023042]">
-          Patient Management
-        </h2>
+      <div className="relative max-w-7xl mx-auto px-6">
+        {/* header */}
+        <div className="text-center mb-24">
+          <span className="inline-block mb-4 px-5 py-1.5 text-sm font-semibold tracking-wide text-[#04748B] bg-[#04748B]/10 rounded-full">
+            Patient Lifecycle
+          </span>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#023042]">
+            Intelligent <span className="text-[#04748B]">Patient Management</span>
+          </h2>
+
+          <p className="mt-5 max-w-2xl mx-auto text-lg text-[#023042]/75">
+            A unified system to manage patient journeys seamlessly from
+            registration to discharge with speed, accuracy, and transparency.
+          </p>
+        </div>
+
+        {/* zig-zag cards */}
+        <div className="relative space-y-16">
           {items.map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              whileHover={{ scale: 1.08, y: -10 }}
-              className="
-                relative flex flex-col items-center justify-center
-                rounded-full p-14 text-center
-                border border-[#04748B]/30
-                bg-white
-                shadow-xl hover:shadow-2xl transition
-              "
+              className={`relative flex flex-col md:flex-row items-center gap-10 ${
+                i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+              }`}
             >
-              {/* Icon */}
-              <div
-                className="
-                  flex items-center justify-center w-20 h-20 rounded-full
-                  bg-gradient-to-r from-[#04748B]/20 to-[#053C50]/20
-                  text-[#04748B] text-3xl mb-6
-                "
-              >
+              {/* icon block */}
+              <div className="flex-shrink-0 w-24 h-24 rounded-3xl bg-gradient-to-br from-[#04748B] to-[#053C50] text-white text-4xl flex items-center justify-center shadow-xl">
                 {item.icon}
               </div>
 
-              {/* Title */}
-              <h3 className="text-xl font-bold mb-3 text-[#023042]">
-                {item.title}
-              </h3>
+              {/* content card */}
+              <div className="group relative bg-white rounded-3xl p-8 shadow-lg border border-[#04748B]/10 max-w-xl hover:shadow-2xl transition">
+                <h3 className="text-xl font-bold text-[#023042] group-hover:text-[#04748B] transition">
+                  {item.title}
+                </h3>
 
-              {/* Description */}
-              <p className="text-[#053C50] text-sm max-w-xs">
-                Efficient handling of{" "}
-                <span className="text-[#C85038] font-semibold">
-                  {item.title.toLowerCase()}
-                </span>{" "}
-                for smooth hospital operations.
-              </p>
+                <p className="mt-3 text-[#053C50]/80 leading-relaxed">
+                  Enables efficient handling of{" "}
+                  <span className="font-semibold text-[#C85038]">
+                    {item.title.toLowerCase()}
+                  </span>
+                  , reducing wait times, improving patient satisfaction, and
+                  ensuring smooth hospital workflows.
+                </p>
 
-              {/* Glow */}
-              <div
-                className="
-                  absolute -inset-2 rounded-full
-                  bg-gradient-to-r from-[#04748B]/25 to-[#C85038]/25
-                  blur-3xl opacity-60
-                "
-              ></div>
-            </motion.div>
+                {/* underline accent */}
+                <div className="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-[#04748B] to-[#C85038]" />
+              </div>
+
+              {/* connector line */}
+              {i !== items.length - 1 && (
+                <div className="hidden md:block absolute left-1/2 -bottom-16 w-[2px] h-16 bg-[#04748B]/30" />
+              )}
+            </div>
           ))}
         </div>
       </div>
@@ -200,52 +203,92 @@ function ClinicalModules() {
   ];
 
   return (
-    <section className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-14 text-center text-[#023042]">
-          Clinical Modules
-        </h2>
+    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-[#020f16] to-[#021c28]">
+      {/* ambient background */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-20 w-96 h-96 bg-orange-400/20 rounded-full blur-3xl"></div>
 
-        {/* Horizontal Scroll */}
-        <div className="flex gap-8 overflow-x-auto py-6 scrollbar-hide">
-          {items.map((item, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.1, y: -10 }}
-              className="
-                min-w-[260px] flex-shrink-0 relative rounded-3xl
-                bg-gradient-to-br from-[#04748B] to-[#053C50]
-                text-white p-10 text-center
-                border border-[#023042]/40
-                shadow-2xl cursor-pointer
-              "
-            >
-              {/* Glow */}
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-[#04748B]/40 to-[#C85038]/30 blur-3xl"></div>
+      <div className="relative max-w-7xl mx-auto px-6">
+        {/* header */}
+        <div className="text-center mb-20">
+          <span className="inline-flex items-center gap-2 px-6 py-2 text-xs font-semibold tracking-widest uppercase text-cyan-200 bg-white/10 backdrop-blur rounded-full mb-6">
+            Clinical Intelligence
+          </span>
 
-              {/* Content */}
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="text-6xl mb-5">{item.icon}</div>
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white">
+            Advanced{" "}
+            <span className="bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent">
+              Clinical Modules
+            </span>
+          </h2>
 
-                <h3 className="text-xl font-bold mb-3">
-                  {item.title}
-                </h3>
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-cyan-100/70">
+            Smart tools designed to support doctors, streamline clinical
+            workflows, and improve patient outcomes.
+          </p>
+        </div>
 
-                <p className="text-sm text-slate-200">
-                  Efficient{" "}
-                  <span className="text-[#C85038] font-semibold">
-                    {item.title.toLowerCase()}
-                  </span>{" "}
-                  management for smooth clinical operations.
-                </p>
-              </div>
-            </motion.div>
-          ))}
+        {/* stacked cards carousel */}
+        <div className="relative">
+          <div className="flex gap-10 overflow-x-auto pb-16 snap-x snap-mandatory scrollbar-hide">
+            {items.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 80 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: i * 0.12 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -14, rotate: -1 }}
+                className="relative min-w-[300px] md:min-w-[360px] snap-center group"
+              >
+                {/* gradient shell */}
+                <div className="absolute -inset-[2px] rounded-[32px] bg-gradient-to-br from-cyan-400 via-teal-400 to-orange-400 opacity-40 group-hover:opacity-90 transition"></div>
+
+                {/* glass card */}
+                <div className="relative h-full rounded-[32px] bg-white/10 backdrop-blur-2xl border border-white/10 p-12 text-center">
+                  {/* floating icon */}
+                  <motion.div
+                    whileHover={{ scale: 1.25, rotate: 6 }}
+                    className="mx-auto mb-8 w-20 h-20 rounded-2xl flex items-center justify-center text-4xl bg-gradient-to-br from-cyan-400 to-teal-500 shadow-2xl"
+                  >
+                    {item.icon}
+                  </motion.div>
+
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-sm text-cyan-100/75 leading-relaxed">
+                    Intelligent{" "}
+                    <span className="font-semibold text-orange-400">
+                      {item.title.toLowerCase()}
+                    </span>{" "}
+                    designed to accelerate clinical decision-making and improve
+                    care delivery.
+                  </p>
+
+                  {/* hover accent */}
+                  <div className="mt-8 mx-auto h-[2px] w-0 group-hover:w-20 transition-all duration-500 bg-gradient-to-r from-cyan-400 to-orange-400"></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* edge fade */}
+          <div className="pointer-events-none absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-[#020f16] to-transparent"></div>
+          <div className="pointer-events-none absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-[#020f16] to-transparent"></div>
+        </div>
+
+        {/* scroll cue */}
+        <div className="mt-20 flex flex-col items-center gap-2 text-cyan-300/70 text-xs tracking-widest uppercase">
+          <span>Scroll</span>
+          <div className="w-1 h-8 rounded-full bg-gradient-to-b from-cyan-400 to-orange-400"></div>
         </div>
       </div>
     </section>
   );
 }
+
 
 
 
@@ -260,56 +303,75 @@ function AdministrativeModules() {
   ];
 
   return (
-    <section className="py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-14 text-center text-[#023042]">
-          Administrative Modules
-        </h2>
+    <section className="relative py-28 bg-white overflow-hidden">
+      {/* architectural background */}
+      <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(4,116,139,0.06),transparent,rgba(200,80,56,0.06))]" />
+      <div className="absolute -top-40 left-1/3 w-[520px] h-[520px] bg-[#04748B]/20 rounded-full blur-[140px]" />
+      <div className="absolute -bottom-40 right-1/3 w-[520px] h-[520px] bg-[#C85038]/20 rounded-full blur-[140px]" />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="relative max-w-7xl mx-auto px-6">
+        {/* header */}
+        <div className="text-center mb-24">
+          <span className="inline-block mb-4 px-5 py-1.5 text-sm font-semibold tracking-wide text-[#04748B] bg-[#04748B]/10 rounded-full">
+            Hospital Administration
+          </span>
+
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#023042]">
+            Administrative <span className="text-[#04748B]">Modules</span>
+          </h2>
+
+          <p className="mt-5 max-w-2xl mx-auto text-lg text-[#023042]/75">
+            Control and optimize hospital infrastructure, operations, and
+            reporting through smart administrative workflows.
+          </p>
+        </div>
+
+        {/* timeline style layout */}
+        <div className="relative grid md:grid-cols-5 gap-10">
           {items.map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              whileHover={{ scale: 1.08, y: -8 }}
-              className="
-                relative p-10 rounded-3xl
-                bg-gradient-to-br from-[#04748B] to-[#053C50]
-                text-white shadow-2xl
-                border border-[#023042]/40
-                flex flex-col items-center justify-center
-                overflow-hidden cursor-pointer
-              "
+              className="group relative bg-white rounded-3xl p-8 shadow-xl border border-[#04748B]/10
+                         hover:shadow-2xl transition duration-500"
             >
-              {/* Glow Accent */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-[#04748B]/40 to-[#C85038]/30 blur-3xl rounded-3xl"></div>
-
-              {/* Decorative Orbs */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-[#C85038]/20"></div>
-              <div className="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-[#9C4436]/20"></div>
-
-              {/* Content */}
-              <div className="relative z-10 text-center">
-                <div className="text-5xl mb-5">{item.icon}</div>
-
-                <h3 className="font-bold text-xl mb-2">
-                  {item.title}
-                </h3>
-
-                <p className="text-sm text-slate-200">
-                  Manage{" "}
-                  <span className="text-[#C85038] font-semibold">
-                    {item.title.toLowerCase()}
-                  </span>{" "}
-                  efficiently.
-                </p>
+              {/* step badge */}
+              <div className="absolute -top-4 -right-4 w-10 h-10 rounded-xl bg-gradient-to-br from-[#04748B] to-[#053C50]
+                              text-white text-sm font-bold flex items-center justify-center shadow-lg">
+                {i + 1}
               </div>
-            </motion.div>
+
+              {/* icon */}
+              <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#04748B]/15 to-[#053C50]/15
+                              text-[#04748B] text-3xl flex items-center justify-center
+                              group-hover:from-[#04748B] group-hover:to-[#053C50]
+                              group-hover:text-white transition-all duration-500 shadow-inner">
+                {item.icon}
+              </div>
+
+              {/* title */}
+              <h3 className="text-lg font-semibold text-[#023042] group-hover:text-[#04748B] transition">
+                {item.title}
+              </h3>
+
+              {/* description */}
+              <p className="mt-3 text-sm text-[#023042]/70 leading-relaxed">
+                Provides centralized control over{" "}
+                <span className="font-semibold text-[#C85038]">
+                  {item.title.toLowerCase()}
+                </span>
+                , improving utilization, compliance, and operational efficiency.
+              </p>
+
+              {/* underline */}
+              <div className="mt-5 h-1 w-16 rounded-full bg-gradient-to-r from-[#04748B] to-[#C85038]" />
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ================= ADD-ON MODULE ================= */
 function AddOnModules() {
@@ -321,53 +383,92 @@ function AddOnModules() {
   ];
 
   return (
-    <section className="py-16">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-14 text-[#023042]">
-          Add-On Modules
-        </h2>
+    <section className="relative py-32 overflow-hidden bg-[#020f16]">
+      {/* animated background grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:80px_80px]"></div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      {/* ambient glow */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-400/20 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-orange-400/20 blur-3xl rounded-full"></div>
+
+      <div className="relative max-w-7xl mx-auto px-6">
+        {/* header */}
+        <div className="text-center mb-24">
+          <span className="inline-flex items-center gap-2 px-6 py-2 text-xs font-semibold tracking-[0.35em] uppercase text-cyan-300 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 mb-6">
+            Optional Enhancements
+          </span>
+
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white">
+            Powerful{" "}
+            <span className="bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent">
+              Add-On Modules
+            </span>
+          </h2>
+
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-cyan-100/70">
+            Extend your hospital platform with smart add-ons that improve
+            scalability, communication, and system performance.
+          </p>
+        </div>
+
+        {/* hex cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-14">
           {items.map((item, i) => (
             <motion.div
               key={i}
-              whileHover={{ scale: 1.08, y: -8 }}
-              className="
-                relative p-10 rounded-3xl
-                bg-gradient-to-br from-[#04748B] to-[#053C50]
-                text-white shadow-2xl
-                border border-[#023042]/40
-                flex flex-col items-center justify-center
-                overflow-hidden cursor-pointer
-              "
+              initial={{ opacity: 0, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: i * 0.12 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -16 }}
+              className="relative group"
             >
-              {/* Glow */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-[#04748B]/40 to-[#C85038]/30 blur-3xl rounded-3xl"></div>
+              {/* gradient border */}
+              <div className="absolute -inset-[2px] bg-gradient-to-br from-cyan-400 to-orange-400 opacity-40 group-hover:opacity-90 transition clip-hex"></div>
 
-              {/* Accent dots */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-[#C85038]/20"></div>
-              <div className="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-[#9C4436]/20"></div>
+              {/* card */}
+              <div className="relative clip-hex bg-white/10 backdrop-blur-2xl border border-white/10 p-12 text-center">
+                {/* floating icon */}
+                <motion.div
+                  whileHover={{ rotate: 12, scale: 1.25 }}
+                  className="mx-auto mb-7 w-20 h-20 rounded-2xl flex items-center justify-center text-4xl bg-gradient-to-br from-cyan-400 to-teal-500 shadow-xl"
+                >
+                  {item.icon}
+                </motion.div>
 
-              {/* Content */}
-              <div className="relative z-10">
-                <div className="text-5xl mb-5">{item.icon}</div>
-
-                <h3 className="font-bold text-xl mb-2">
+                <h3 className="text-xl font-bold text-white mb-3">
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-slate-200">
-                  Enhance efficiency with{" "}
-                  <span className="text-[#C85038] font-semibold">
+                <p className="text-sm text-cyan-100/75 leading-relaxed">
+                  Enhance operations with{" "}
+                  <span className="text-orange-400 font-semibold">
                     {item.title.toLowerCase()}
                   </span>
                   .
                 </p>
+
+                {/* hover underline */}
+                <div className="mt-6 mx-auto h-[2px] w-0 group-hover:w-16 transition-all duration-500 bg-gradient-to-r from-cyan-400 to-orange-400"></div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* hex clip style */}
+      <style jsx>{`
+        .clip-hex {
+          clip-path: polygon(
+            25% 0%,
+            75% 0%,
+            100% 50%,
+            75% 100%,
+            25% 100%,
+            0% 50%
+          );
+        }
+      `}</style>
     </section>
   );
 }

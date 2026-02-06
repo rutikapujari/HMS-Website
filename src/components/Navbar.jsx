@@ -1,35 +1,41 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Menu, X } from "lucide-react";
+
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  const menuItems = [
+    { name: "Home", path: "/" },
+    { name: "About HIMS", path: "/about" },
+    { name: "Modules", path: "/modules" },
+    { name: "Features", path: "/features" },
+    { name: "Solutions", path: "/solutions" },
+    { name: "Why HIMS", path: "/why-hims" },
+  ];
+
   return (
-    <nav className="fixed top-0 w-full bg-[#023042] shadow-lg z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <nav className="fixed top-0 w-full bg-[#023042] z-50 shadow-md">
+      {/* MAIN BAR */}
+      <div className="max-w-7xl mx-auto px-4 h-[72px] flex items-center justify-between">
+        
         {/* LOGO */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <Image
             src="/images/HIMS.png"
             alt="HIMS Logo"
-            width={90}
-            height={50}
+            width={75}
+            height={42}
+            className="object-contain"
           />
         </div>
-        {/* BRAND NAME */}
-        <h1 className="text-3xl font-extrabold leading-tight">
-          <span className="text-white">HIMS</span>
-          <span className="block text-sm text-[#9ad1e3]">
-            Hospital Information Management System
-          </span>
-        </h1>
-        {/* MENU */}
-        <ul className="hidden md:flex items-center space-x-8 font-semibold text-white">
-          {[
-            { name: "Home", path: "/" },
-            { name: "About HIMS", path: "/about" },
-            { name: "Modules", path: "/modules" },
-            { name: "Features", path: "/features" },
-            { name: "Solutions", path: "/solutions" },
-            { name: "Why HIMS", path: "/why-hims" },
-          ].map((item, index) => (
+
+        {/* DESKTOP MENU */}
+        <ul className="hidden md:flex items-center gap-6 text-sm font-semibold text-white">
+          {menuItems.map((item, index) => (
             <li key={index}>
               <Link
                 href={item.path}
@@ -39,22 +45,56 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
+
           {/* CTA */}
           <li>
             <Link
               href="/contact"
-              className="ml-4 px-6 py-2.5 rounded-xl font-bold text-white
-    bg-gradient-to-r from-[#9C4436] to-[#C85038]
-    shadow-lg shadow-black/30
-    hover:scale-105 hover:shadow-xl
-    hover:from-[#C85038] hover:to-[#9C4436]
-    transition-all duration-300"
+              className="ml-2 px-4 py-2 rounded-lg font-bold text-white
+              bg-gradient-to-r from-[#9C4436] to-[#C85038]
+              hover:scale-105 transition-all duration-300"
             >
               Contact
             </Link>
           </li>
         </ul>
+
+        {/* MOBILE BUTTON */}
+        <button
+          className="md:hidden text-white"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X size={26} /> : <Menu size={26} />}
+        </button>
       </div>
+
+      {/* MOBILE MENU */}
+      {open && (
+        <div className="md:hidden bg-[#023042] border-t border-white/10">
+          <ul className="flex flex-col px-6 py-4 gap-4 text-white font-medium">
+            {menuItems.map((item, index) => (
+              <li key={index}>
+                <Link
+                  href={item.path}
+                  onClick={() => setOpen(false)}
+                  className="block hover:text-[#9ad1e3] transition"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="mt-2 text-center px-4 py-2 rounded-lg font-bold text-white
+              bg-gradient-to-r from-[#9C4436] to-[#C85038]"
+            >
+              Contact
+            </Link>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }

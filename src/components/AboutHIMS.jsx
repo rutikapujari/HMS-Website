@@ -118,94 +118,112 @@ export default function AboutHIMS() {
 
 
       {/* ================= ABOUT SECTION ================= */}
-  <section id="about" className="py-24">
-  <div className="max-w-7xl mx-auto px-6">
+<section
+  id="about"
+  className="relative py-32 overflow-hidden bg-gradient-to-br from-[#021c28] via-[#023042] to-[#021c28]"
+>
+  {/* background effects */}
+  <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#04748B]/30 rounded-full blur-3xl"></div>
+  <div className="absolute bottom-0 -right-32 w-96 h-96 bg-[#C85038]/30 rounded-full blur-3xl"></div>
 
-    {/* Heading */}
-    <h2 className="text-4xl md:text-6xl font-extrabold text-center mb-6 text-[#023042]">
-      About{" "}
-      <span className="bg-gradient-to-r from-[#04748B] to-[#C85038] bg-clip-text text-transparent">
-        Goanny & HIMS
+  <div className="relative max-w-7xl mx-auto px-6">
+    {/* heading */}
+    <div className="text-center mb-24">
+      <span className="inline-flex items-center gap-2 mb-6 px-6 py-2 text-sm font-semibold tracking-widest uppercase text-cyan-200 bg-white/10 backdrop-blur rounded-full">
+        About Our Platform
       </span>
-    </h2>
 
-    {/* Sub text */}
-    <p className="max-w-3xl mx-auto text-center text-[#053C50] text-lg mb-20">
-      Smart digital healthcare solutions designed to simplify operations and enhance patient care.
-    </p>
+      <h2 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+        Goanny{" "}
+        <span className="bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent">
+          & HIMS
+        </span>
+      </h2>
 
-    {/* Cards */}
-    <div className="grid md:grid-cols-2 gap-12">
+      <p className="mt-6 max-w-3xl mx-auto text-lg text-cyan-100/80">
+        A modern digital healthcare ecosystem built to transform hospital
+        operations and elevate patient care experiences.
+      </p>
+    </div>
+
+    {/* timeline layout */}
+    <div className="relative grid md:grid-cols-2 gap-x-24 gap-y-20">
+      {/* center line */}
+      <div className="hidden md:block absolute left-1/2 top-0 w-[2px] h-full bg-gradient-to-b from-cyan-400/0 via-cyan-400/60 to-cyan-400/0 -translate-x-1/2"></div>
+
       {[
         {
           icon: "🏢",
           title: "Goanny Technologies",
-          desc: "A technology-driven company focused on building digital products that simplify operations and improve customer experience.",
-          color: "#04748B",
+          desc: "A product-driven technology company crafting intelligent digital solutions that streamline workflows and enhance user experience.",
+          color: "from-cyan-400 to-cyan-600",
         },
         {
           icon: "🏥",
           title: "What is HIMS?",
-          desc: "A unified platform managing OPD, IPD, Pharmacy, Lab, Billing, Accounting, and Administration seamlessly.",
-          color: "#053C50",
+          desc: "An all-in-one hospital management system covering OPD, IPD, Pharmacy, Lab, Billing, Accounting, and Admin operations.",
+          color: "from-teal-400 to-teal-600",
         },
         {
           icon: "💡",
           title: "Our Vision",
-          desc: "To redefine healthcare through innovation, automation, and intelligent systems.",
-          color: "#9C4436",
+          desc: "To revolutionize healthcare through automation, interoperability, and smart decision-making systems.",
+          color: "from-orange-400 to-orange-600",
         },
         {
           icon: "🚀",
           title: "Our Mission",
-          desc: "Empowering hospitals with smart digital tools to enhance care quality and operational efficiency.",
-          color: "#C85038",
+          desc: "To empower hospitals with secure, scalable, and intelligent digital tools that improve outcomes and efficiency.",
+          color: "from-rose-400 to-rose-600",
         },
       ].map((item, index) => (
         <motion.div
           key={index}
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: index * 0.1 }}
+          transition={{ duration: 0.8, delay: index * 0.15 }}
           viewport={{ once: true }}
-          whileHover={{ scale: 1.05 }}
-          className="
-            relative p-10 rounded-3xl border
-            shadow-md hover:shadow-2xl hover:-translate-y-2
-            transition-all duration-500 group bg-transparent
-          "
-          style={{ borderColor: item.color }}
+          className={`relative ${
+            index % 2 === 0 ? "md:pr-16" : "md:pl-16"
+          }`}
         >
-          {/* Glow */}
-          <div
-            className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition"
-            style={{
-              background: `radial-gradient(circle at top, ${item.color}40, transparent 70%)`,
-            }}
-          />
+          {/* dot */}
+          <div className="hidden md:flex absolute top-6 left-1/2 -translate-x-1/2 z-20">
+            <div
+              className={`w-5 h-5 rounded-full bg-gradient-to-br ${item.color} shadow-lg`}
+            ></div>
+          </div>
 
-          <div className="relative z-10">
-            <div className="text-5xl mb-5" style={{ color: item.color }}>
-              {item.icon}
+          {/* card */}
+          <div className="group relative bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-10 hover:bg-white/15 transition-all duration-500">
+            {/* glow */}
+            <div
+              className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-30 transition bg-gradient-to-br ${item.color}`}
+            ></div>
+
+            <div className="relative z-10">
+              <div className="text-5xl mb-6">{item.icon}</div>
+
+              <h3 className="text-2xl font-bold mb-4 text-white">
+                {item.title}
+              </h3>
+
+              <p className="text-cyan-100/80 leading-relaxed">
+                {item.desc}
+              </p>
             </div>
-
-            <h3
-              className="text-2xl font-bold mb-3"
-              style={{ color: item.color }}
-            >
-              {item.title}
-            </h3>
-
-            <p className="text-[#053C50] leading-relaxed">
-              {item.desc}
-            </p>
           </div>
         </motion.div>
       ))}
     </div>
 
+    {/* bottom accent */}
+    <div className="mt-32 flex justify-center">
+      <span className="w-44 h-[3px] rounded-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></span>
+    </div>
   </div>
 </section>
+
 
 
 
