@@ -64,20 +64,18 @@ function CoreModules() {
               viewport={{ once: true }}
               className="text-center md:text-left"
             >
-              <h2 className="text-4xl md:text-5xl font-extrabold text-[#023042]">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white">
                 {module.title}
               </h2>
 
-              <p className="mt-6 text-[#053C50] max-w-xl">
-                {module.desc}
-              </p>
+              <p className="mt-6 text-blue-100 max-w-xl">{module.desc}</p>
 
               <span
                 className="
-                  inline-block mt-8 px-8 py-3 rounded-full font-semibold tracking-wide
-                  bg-gradient-to-r from-[#C85038] to-[#9C4436]
-                  text-white shadow-xl shadow-[#C85038]/30
-                "
+                    inline-block mt-8 px-8 py-3 rounded-full font-semibold tracking-wide
+                    bg-gradient-to-r from-[#C85038] to-[#9C4436]
+                    text-white shadow-xl shadow-[#C85038]/30
+                  "
               >
                 Core Module
               </span>
@@ -91,16 +89,12 @@ function CoreModules() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Glow */}
               <div className="absolute -inset-6 rounded-3xl bg-gradient-to-r from-[#04748B]/40 to-[#053C50]/40 blur-3xl"></div>
 
               <img
                 src={module.img}
                 alt={module.title}
-                className="
-                  relative w-full h-[420px] object-cover rounded-3xl
-                  border border-[#04748B]/40 shadow-2xl
-                "
+                className="relative w-full h-[420px] object-cover rounded-3xl border border-[#04748B]/40 shadow-2xl"
               />
             </motion.div>
           </div>
@@ -109,7 +103,6 @@ function CoreModules() {
     </section>
   );
 }
-
 
 /* ================= PATIENT MANAGEMENT ================= */
 function PatientManagement() {
@@ -136,7 +129,8 @@ function PatientManagement() {
           </span>
 
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#023042]">
-            Intelligent <span className="text-[#04748B]">Patient Management</span>
+            Intelligent{" "}
+            <span className="text-[#04748B]">Patient Management</span>
           </h2>
 
           <p className="mt-5 max-w-2xl mx-auto text-lg text-[#023042]/75">
@@ -189,8 +183,6 @@ function PatientManagement() {
     </section>
   );
 }
-
-
 
 /* ================= CLINICAL MODULE ================= */
 function ClinicalModules() {
@@ -289,9 +281,6 @@ function ClinicalModules() {
   );
 }
 
-
-
-
 /* ================= ADMINISTRATIVE MODULE ================= */
 function AdministrativeModules() {
   const items = [
@@ -335,16 +324,20 @@ function AdministrativeModules() {
                          hover:shadow-2xl transition duration-500"
             >
               {/* step badge */}
-              <div className="absolute -top-4 -right-4 w-10 h-10 rounded-xl bg-gradient-to-br from-[#04748B] to-[#053C50]
-                              text-white text-sm font-bold flex items-center justify-center shadow-lg">
+              <div
+                className="absolute -top-4 -right-4 w-10 h-10 rounded-xl bg-gradient-to-br from-[#04748B] to-[#053C50]
+                              text-white text-sm font-bold flex items-center justify-center shadow-lg"
+              >
                 {i + 1}
               </div>
 
               {/* icon */}
-              <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#04748B]/15 to-[#053C50]/15
+              <div
+                className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#04748B]/15 to-[#053C50]/15
                               text-[#04748B] text-3xl flex items-center justify-center
                               group-hover:from-[#04748B] group-hover:to-[#053C50]
-                              group-hover:text-white transition-all duration-500 shadow-inner">
+                              group-hover:text-white transition-all duration-500 shadow-inner"
+              >
                 {item.icon}
               </div>
 
@@ -371,7 +364,6 @@ function AdministrativeModules() {
     </section>
   );
 }
-
 
 /* ================= ADD-ON MODULE ================= */
 function AddOnModules() {
@@ -473,7 +465,6 @@ function AddOnModules() {
   );
 }
 
-
 /* ================= MAIN PAGE ================= */
 export default function ModulesPage() {
   return (
@@ -541,4 +532,3 @@ export default function ModulesPage() {
     </div>
   );
 }
-

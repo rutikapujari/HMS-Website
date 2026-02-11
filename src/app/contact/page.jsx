@@ -90,6 +90,7 @@ export default function ContactPage() {
           <div className="absolute -bottom-32 -right-32 w-[45%] h-[45%] bg-[#053C50]/60 blur-[160px] rounded-full" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px]" />
         </div>
+        
 
         {/* Glass Panel */}
         <div className="relative z-10 max-w-6xl px-6 text-center backdrop-blur-xl bg-white/5 border border-white/10 rounded-[3rem] py-20 shadow-[0_60px_120px_rgba(0,0,0,0.35)]">
@@ -184,6 +185,7 @@ export default function ContactPage() {
                 >
                   Claim My Free Demo <ArrowRight className="inline ml-3" />
                 </motion.button>
+                
               </form>
             </motion.div>
           </div>

@@ -1,28 +1,25 @@
-"use client"; // Required because Features uses Framer Motion
+"use client";
 
 import Hero from "../components/Hero";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="bg-gray-50 min-h-screen">
+    <>
+      {/* HERO SECTION */}
       <Hero />
 
-      {/* About Link */}
-      <div className="text-center mt-10">
+      {/* ABOUT LINK */}
+      <div className="text-center my-10">
         <Link
           href="/about"
           className="text-blue-600 font-semibold underline hover:text-blue-800 transition-colors"
         >
          
-
-
-         
         </Link>
       </div>
 
-      {/* Features Section */}
-     
-    </main>
+
+    </>
   );
 }
