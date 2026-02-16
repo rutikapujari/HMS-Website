@@ -45,16 +45,14 @@ const coreModules = [
 /* ================= CORE MODULE ================= */
 function CoreModules() {
   return (
-    <section id="core-modules" className="py-24">
+    <section id="core-modules" className="py-24 bg-white">
       {coreModules.map((module, index) => {
         const reverse = index % 2 !== 0;
 
         return (
           <div
             key={index}
-            className={`max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center py-20 ${
-              reverse ? "md:flex-row-reverse" : ""
-            }`}
+            className={`max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center py-20`}
           >
             {/* TEXT */}
             <motion.div
@@ -64,18 +62,20 @@ function CoreModules() {
               viewport={{ once: true }}
               className="text-center md:text-left"
             >
-              <h2 className="text-4xl md:text-5xl font-extrabold text-white">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-[#053C50]">
                 {module.title}
               </h2>
 
-              <p className="mt-6 text-blue-100 max-w-xl">{module.desc}</p>
+              <p className="mt-6 text-gray-600 max-w-xl">
+                {module.desc}
+              </p>
 
               <span
                 className="
-                    inline-block mt-8 px-8 py-3 rounded-full font-semibold tracking-wide
-                    bg-gradient-to-r from-[#C85038] to-[#9C4436]
-                    text-white shadow-xl shadow-[#C85038]/30
-                  "
+                  inline-block mt-8 px-8 py-3 rounded-full font-semibold tracking-wide
+                  bg-gradient-to-r from-[#C85038] to-[#9C4436]
+                  text-white shadow-xl shadow-[#C85038]/20
+                "
               >
                 Core Module
               </span>
@@ -89,12 +89,13 @@ function CoreModules() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="absolute -inset-6 rounded-3xl bg-gradient-to-r from-[#04748B]/40 to-[#053C50]/40 blur-3xl"></div>
+              {/* soft glow for white bg */}
+              <div className="absolute -inset-6 rounded-3xl bg-gradient-to-r from-[#04748B]/20 to-[#053C50]/20 blur-3xl"></div>
 
               <img
                 src={module.img}
                 alt={module.title}
-                className="relative w-full h-[420px] object-cover rounded-3xl border border-[#04748B]/40 shadow-2xl"
+                className="relative w-full h-[420px] object-cover rounded-3xl border border-gray-200 shadow-xl"
               />
             </motion.div>
           </div>
@@ -103,6 +104,7 @@ function CoreModules() {
     </section>
   );
 }
+
 
 /* ================= PATIENT MANAGEMENT ================= */
 function PatientManagement() {
@@ -116,24 +118,24 @@ function PatientManagement() {
   ];
 
   return (
-    <section className="relative py-28 bg-gradient-to-b from-[#F5FAFC] to-white overflow-hidden">
+    <section className="relative py-28 bg-[#053C50] overflow-hidden">
       {/* background accents */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#04748B]/20 rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#C85038]/20 rounded-full blur-[120px]" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#04748B]/30 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#C85038]/25 rounded-full blur-[120px]" />
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* header */}
         <div className="text-center mb-24">
-          <span className="inline-block mb-4 px-5 py-1.5 text-sm font-semibold tracking-wide text-[#04748B] bg-[#04748B]/10 rounded-full">
+          <span className="inline-block mb-4 px-5 py-1.5 text-sm font-semibold tracking-wide text-[#04748B] bg-white/10 rounded-full">
             Patient Lifecycle
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#023042]">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white">
             Intelligent{" "}
-            <span className="text-[#04748B]">Patient Management</span>
+            <span className="text-[#47C7D9]">Patient Management</span>
           </h2>
 
-          <p className="mt-5 max-w-2xl mx-auto text-lg text-[#023042]/75">
+          <p className="mt-5 max-w-2xl mx-auto text-lg text-white/80">
             A unified system to manage patient journeys seamlessly from
             registration to discharge with speed, accuracy, and transparency.
           </p>
@@ -149,12 +151,12 @@ function PatientManagement() {
               }`}
             >
               {/* icon block */}
-              <div className="flex-shrink-0 w-24 h-24 rounded-3xl bg-gradient-to-br from-[#04748B] to-[#053C50] text-white text-4xl flex items-center justify-center shadow-xl">
+              <div className="flex-shrink-0 w-24 h-24 rounded-3xl bg-gradient-to-br from-[#04748B] to-[#023042] text-white text-4xl flex items-center justify-center shadow-xl">
                 {item.icon}
               </div>
 
               {/* content card */}
-              <div className="group relative bg-white rounded-3xl p-8 shadow-lg border border-[#04748B]/10 max-w-xl hover:shadow-2xl transition">
+              <div className="group relative bg-white rounded-3xl p-8 shadow-xl border border-white/10 max-w-xl hover:shadow-2xl transition">
                 <h3 className="text-xl font-bold text-[#023042] group-hover:text-[#04748B] transition">
                   {item.title}
                 </h3>
@@ -168,13 +170,12 @@ function PatientManagement() {
                   ensuring smooth hospital workflows.
                 </p>
 
-                {/* underline accent */}
                 <div className="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-[#04748B] to-[#C85038]" />
               </div>
 
               {/* connector line */}
               {i !== items.length - 1 && (
-                <div className="hidden md:block absolute left-1/2 -bottom-16 w-[2px] h-16 bg-[#04748B]/30" />
+                <div className="hidden md:block absolute left-1/2 -bottom-16 w-[2px] h-16 bg-white/30" />
               )}
             </div>
           ))}
@@ -183,6 +184,7 @@ function PatientManagement() {
     </section>
   );
 }
+
 
 /* ================= CLINICAL MODULE ================= */
 function ClinicalModules() {
@@ -195,26 +197,26 @@ function ClinicalModules() {
   ];
 
   return (
-    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-[#020f16] to-[#021c28]">
+    <section className="relative py-32 overflow-hidden bg-white">
       {/* ambient background */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-400/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-10 right-20 w-96 h-96 bg-orange-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-[#04748B]/15 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-20 w-96 h-96 bg-[#C85038]/15 rounded-full blur-3xl"></div>
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* header */}
         <div className="text-center mb-20">
-          <span className="inline-flex items-center gap-2 px-6 py-2 text-xs font-semibold tracking-widest uppercase text-cyan-200 bg-white/10 backdrop-blur rounded-full mb-6">
+          <span className="inline-flex items-center gap-2 px-6 py-2 text-xs font-semibold tracking-widest uppercase text-[#04748B] bg-[#04748B]/10 rounded-full mb-6">
             Clinical Intelligence
           </span>
 
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white">
+          <h2 className="text-4xl md:text-6xl font-extrabold text-[#023042]">
             Advanced{" "}
-            <span className="bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#04748B] to-[#C85038] bg-clip-text text-transparent">
               Clinical Modules
             </span>
           </h2>
 
-          <p className="mt-6 max-w-2xl mx-auto text-lg text-cyan-100/70">
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-[#053C50]/70">
             Smart tools designed to support doctors, streamline clinical
             workflows, and improve patient outcomes.
           </p>
@@ -234,25 +236,25 @@ function ClinicalModules() {
                 className="relative min-w-[300px] md:min-w-[360px] snap-center group"
               >
                 {/* gradient shell */}
-                <div className="absolute -inset-[2px] rounded-[32px] bg-gradient-to-br from-cyan-400 via-teal-400 to-orange-400 opacity-40 group-hover:opacity-90 transition"></div>
+                <div className="absolute -inset-[2px] rounded-[32px] bg-gradient-to-br from-[#04748B] via-[#53B9C9] to-[#C85038] opacity-30 group-hover:opacity-70 transition"></div>
 
-                {/* glass card */}
-                <div className="relative h-full rounded-[32px] bg-white/10 backdrop-blur-2xl border border-white/10 p-12 text-center">
+                {/* card */}
+                <div className="relative h-full rounded-[32px] bg-white border border-[#04748B]/10 shadow-xl p-12 text-center">
                   {/* floating icon */}
                   <motion.div
                     whileHover={{ scale: 1.25, rotate: 6 }}
-                    className="mx-auto mb-8 w-20 h-20 rounded-2xl flex items-center justify-center text-4xl bg-gradient-to-br from-cyan-400 to-teal-500 shadow-2xl"
+                    className="mx-auto mb-8 w-20 h-20 rounded-2xl flex items-center justify-center text-4xl text-white bg-gradient-to-br from-[#04748B] to-[#053C50] shadow-xl"
                   >
                     {item.icon}
                   </motion.div>
 
-                  <h3 className="text-2xl font-bold text-white mb-4">
+                  <h3 className="text-2xl font-bold text-[#023042] mb-4">
                     {item.title}
                   </h3>
 
-                  <p className="text-sm text-cyan-100/75 leading-relaxed">
+                  <p className="text-sm text-[#053C50]/75 leading-relaxed">
                     Intelligent{" "}
-                    <span className="font-semibold text-orange-400">
+                    <span className="font-semibold text-[#C85038]">
                       {item.title.toLowerCase()}
                     </span>{" "}
                     designed to accelerate clinical decision-making and improve
@@ -260,26 +262,27 @@ function ClinicalModules() {
                   </p>
 
                   {/* hover accent */}
-                  <div className="mt-8 mx-auto h-[2px] w-0 group-hover:w-20 transition-all duration-500 bg-gradient-to-r from-cyan-400 to-orange-400"></div>
+                  <div className="mt-8 mx-auto h-[2px] w-0 group-hover:w-20 transition-all duration-500 bg-gradient-to-r from-[#04748B] to-[#C85038]"></div>
                 </div>
               </motion.div>
             ))}
           </div>
 
           {/* edge fade */}
-          <div className="pointer-events-none absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-[#020f16] to-transparent"></div>
-          <div className="pointer-events-none absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-[#020f16] to-transparent"></div>
+          <div className="pointer-events-none absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-white to-transparent"></div>
+          <div className="pointer-events-none absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-white to-transparent"></div>
         </div>
 
         {/* scroll cue */}
-        <div className="mt-20 flex flex-col items-center gap-2 text-cyan-300/70 text-xs tracking-widest uppercase">
+        <div className="mt-20 flex flex-col items-center gap-2 text-[#04748B]/60 text-xs tracking-widest uppercase">
           <span>Scroll</span>
-          <div className="w-1 h-8 rounded-full bg-gradient-to-b from-cyan-400 to-orange-400"></div>
+          <div className="w-1 h-8 rounded-full bg-gradient-to-b from-[#04748B] to-[#C85038]"></div>
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ================= ADMINISTRATIVE MODULE ================= */
 function AdministrativeModules() {
@@ -292,62 +295,56 @@ function AdministrativeModules() {
   ];
 
   return (
-    <section className="relative py-28 bg-white overflow-hidden">
+    <section className="relative py-28 bg-[#053C50] overflow-hidden">
       {/* architectural background */}
-      <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(4,116,139,0.06),transparent,rgba(200,80,56,0.06))]" />
-      <div className="absolute -top-40 left-1/3 w-[520px] h-[520px] bg-[#04748B]/20 rounded-full blur-[140px]" />
-      <div className="absolute -bottom-40 right-1/3 w-[520px] h-[520px] bg-[#C85038]/20 rounded-full blur-[140px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(4,116,139,0.15),transparent,rgba(200,80,56,0.15))]" />
+      <div className="absolute -top-40 left-1/3 w-[520px] h-[520px] bg-[#04748B]/30 rounded-full blur-[140px]" />
+      <div className="absolute -bottom-40 right-1/3 w-[520px] h-[520px] bg-[#C85038]/30 rounded-full blur-[140px]" />
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* header */}
         <div className="text-center mb-24">
-          <span className="inline-block mb-4 px-5 py-1.5 text-sm font-semibold tracking-wide text-[#04748B] bg-[#04748B]/10 rounded-full">
+          <span className="inline-block mb-4 px-5 py-1.5 text-sm font-semibold tracking-wide text-[#53B9C9] bg-white/10 rounded-full">
             Hospital Administration
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#023042]">
-            Administrative <span className="text-[#04748B]">Modules</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white">
+            Administrative <span className="text-[#53B9C9]">Modules</span>
           </h2>
 
-          <p className="mt-5 max-w-2xl mx-auto text-lg text-[#023042]/75">
+          <p className="mt-5 max-w-2xl mx-auto text-lg text-blue-100/80">
             Control and optimize hospital infrastructure, operations, and
             reporting through smart administrative workflows.
           </p>
         </div>
 
-        {/* timeline style layout */}
+        {/* cards grid */}
         <div className="relative grid md:grid-cols-5 gap-10">
           {items.map((item, i) => (
             <div
               key={i}
-              className="group relative bg-white rounded-3xl p-8 shadow-xl border border-[#04748B]/10
-                         hover:shadow-2xl transition duration-500"
+              className="group relative bg-white/10 backdrop-blur-xl rounded-3xl p-8
+                         border border-white/10 shadow-xl hover:shadow-2xl
+                         hover:bg-white/15 transition duration-500"
             >
               {/* step badge */}
-              <div
-                className="absolute -top-4 -right-4 w-10 h-10 rounded-xl bg-gradient-to-br from-[#04748B] to-[#053C50]
-                              text-white text-sm font-bold flex items-center justify-center shadow-lg"
-              >
+              <div className="absolute -top-4 -right-4 w-10 h-10 rounded-xl bg-gradient-to-br from-[#04748B] to-[#053C50] text-white text-sm font-bold flex items-center justify-center shadow-lg">
                 {i + 1}
               </div>
 
               {/* icon */}
-              <div
-                className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#04748B]/15 to-[#053C50]/15
-                              text-[#04748B] text-3xl flex items-center justify-center
-                              group-hover:from-[#04748B] group-hover:to-[#053C50]
-                              group-hover:text-white transition-all duration-500 shadow-inner"
-              >
+              <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#04748B] to-[#053C50]
+                              text-white text-3xl flex items-center justify-center shadow-lg">
                 {item.icon}
               </div>
 
               {/* title */}
-              <h3 className="text-lg font-semibold text-[#023042] group-hover:text-[#04748B] transition">
+              <h3 className="text-lg font-semibold text-white group-hover:text-[#53B9C9] transition">
                 {item.title}
               </h3>
 
               {/* description */}
-              <p className="mt-3 text-sm text-[#023042]/70 leading-relaxed">
+              <p className="mt-3 text-sm text-blue-100/80 leading-relaxed">
                 Provides centralized control over{" "}
                 <span className="font-semibold text-[#C85038]">
                   {item.title.toLowerCase()}
@@ -365,6 +362,7 @@ function AdministrativeModules() {
   );
 }
 
+
 /* ================= ADD-ON MODULE ================= */
 function AddOnModules() {
   const items = [
@@ -375,29 +373,29 @@ function AddOnModules() {
   ];
 
   return (
-    <section className="relative py-32 overflow-hidden bg-[#020f16]">
-      {/* animated background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+    <section className="relative py-32 overflow-hidden bg-white">
+      {/* soft grid background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:80px_80px]"></div>
 
-      {/* ambient glow */}
-      <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-400/20 blur-3xl rounded-full"></div>
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-orange-400/20 blur-3xl rounded-full"></div>
+      {/* soft glow */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-[#04748B]/15 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#C85038]/15 blur-3xl rounded-full"></div>
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* header */}
         <div className="text-center mb-24">
-          <span className="inline-flex items-center gap-2 px-6 py-2 text-xs font-semibold tracking-[0.35em] uppercase text-cyan-300 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 mb-6">
+          <span className="inline-flex items-center gap-2 px-6 py-2 text-xs font-semibold tracking-[0.35em] uppercase text-[#04748B] bg-[#04748B]/10 rounded-full border border-[#04748B]/20 mb-6">
             Optional Enhancements
           </span>
 
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white">
+          <h2 className="text-4xl md:text-6xl font-extrabold text-[#023042]">
             Powerful{" "}
-            <span className="bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#04748B] to-[#C85038] bg-clip-text text-transparent">
               Add-On Modules
             </span>
           </h2>
 
-          <p className="mt-6 max-w-2xl mx-auto text-lg text-cyan-100/70">
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-[#023042]/70">
             Extend your hospital platform with smart add-ons that improve
             scalability, communication, and system performance.
           </p>
@@ -416,32 +414,32 @@ function AddOnModules() {
               className="relative group"
             >
               {/* gradient border */}
-              <div className="absolute -inset-[2px] bg-gradient-to-br from-cyan-400 to-orange-400 opacity-40 group-hover:opacity-90 transition clip-hex"></div>
+              <div className="absolute -inset-[2px] bg-gradient-to-br from-[#04748B] to-[#C85038] opacity-30 group-hover:opacity-70 transition clip-hex"></div>
 
               {/* card */}
-              <div className="relative clip-hex bg-white/10 backdrop-blur-2xl border border-white/10 p-12 text-center">
-                {/* floating icon */}
+              <div className="relative clip-hex bg-white border border-[#04748B]/15 p-12 text-center shadow-xl">
+                {/* icon */}
                 <motion.div
                   whileHover={{ rotate: 12, scale: 1.25 }}
-                  className="mx-auto mb-7 w-20 h-20 rounded-2xl flex items-center justify-center text-4xl bg-gradient-to-br from-cyan-400 to-teal-500 shadow-xl"
+                  className="mx-auto mb-7 w-20 h-20 rounded-2xl flex items-center justify-center text-4xl bg-gradient-to-br from-[#04748B] to-[#053C50] text-white shadow-lg"
                 >
                   {item.icon}
                 </motion.div>
 
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-[#023042] mb-3">
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-cyan-100/75 leading-relaxed">
+                <p className="text-sm text-[#023042]/70 leading-relaxed">
                   Enhance operations with{" "}
-                  <span className="text-orange-400 font-semibold">
+                  <span className="text-[#C85038] font-semibold">
                     {item.title.toLowerCase()}
                   </span>
                   .
                 </p>
 
                 {/* hover underline */}
-                <div className="mt-6 mx-auto h-[2px] w-0 group-hover:w-16 transition-all duration-500 bg-gradient-to-r from-cyan-400 to-orange-400"></div>
+                <div className="mt-6 mx-auto h-[2px] w-0 group-hover:w-16 transition-all duration-500 bg-gradient-to-r from-[#04748B] to-[#C85038]"></div>
               </div>
             </motion.div>
           ))}
@@ -464,6 +462,7 @@ function AddOnModules() {
     </section>
   );
 }
+
 
 /* ================= MAIN PAGE ================= */
 export default function ModulesPage() {

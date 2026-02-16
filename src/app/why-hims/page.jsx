@@ -172,7 +172,7 @@ function PainPoints() {
   ];
 
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-32 overflow-hidden bg-white">
       {/* Background texture + glow */}
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#ffffff,transparent_40%,#ffffff)]"></div>
       <div className="absolute top-0 left-1/2 w-[50rem] h-[50rem] -translate-x-1/2 bg-[#04748B]/15 blur-[180px] rounded-full"></div>
@@ -247,7 +247,6 @@ function PainPoints() {
   );
 }
 
-
 /* ================= WHY HIMS ================= */
 
 function WhyHims() {
@@ -290,7 +289,7 @@ function WhyHims() {
   ];
 
   return (
-    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-[#F8FBFC] via-white to-[#EEF5F7]">
+    <section className="relative py-32 overflow-hidden bg-[#053C50]">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#04748B14_1px,transparent_1px),linear-gradient(to_bottom,#04748B14_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
@@ -305,12 +304,11 @@ function WhyHims() {
             One Platform. Total Control.
           </p>
 
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#053C50] leading-tight">
-            Why Hospitals Choose{" "}
-            <span className="text-[#C85038]">HIMS</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+            Why Hospitals Choose <span className="text-[#C85038]">HIMS</span>
           </h2>
 
-          <p className="mt-6 text-lg text-[#023042]/80">
+          <p className="mt-6 text-lg text-white/80">
             Designed to eliminate complexity, improve efficiency, and scale
             healthcare operations intelligently.
           </p>
@@ -365,7 +363,6 @@ function WhyHims() {
     </section>
   );
 }
-
 
 /* ================= AI SECTION ================= */
 
@@ -445,8 +442,10 @@ function AISection() {
                 </motion.div>
 
                 {/* Content */}
-                <div className="bg-white/80 backdrop-blur-xl border border-[#053C50]/10 
-                                rounded-3xl p-8 md:p-10 shadow-xl max-w-xl">
+                <div
+                  className="bg-white/80 backdrop-blur-xl border border-[#053C50]/10 
+                                rounded-3xl p-8 md:p-10 shadow-xl max-w-xl"
+                >
                   <h3 className="text-2xl md:text-3xl font-bold text-[#053C50] mb-4">
                     {card.title}
                   </h3>
@@ -465,7 +464,6 @@ function AISection() {
     </section>
   );
 }
-
 
 /* ================= PROCESS SECTION ================= */
 function ProcessSection() {
@@ -497,14 +495,12 @@ function ProcessSection() {
   ];
 
   return (
-    <section className="relative py-36 bg-gradient-to-br from-[#020f16] via-[#032536] to-[#020f16] overflow-hidden">
-
+    <section className="relative py-36 bg-[#053C50] overflow-hidden">
       {/* Animated background glow */}
       <div className="absolute w-[700px] h-[700px] bg-cyan-400/20 blur-[180px] -top-40 -left-40 rounded-full" />
       <div className="absolute w-[700px] h-[700px] bg-orange-400/20 blur-[180px] -bottom-40 -right-40 rounded-full" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-
         <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-28 text-center">
           How{" "}
           <span className="bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent">
@@ -515,11 +511,9 @@ function ProcessSection() {
 
         {/* Timeline Line */}
         <div className="relative">
-
           <div className="hidden md:block absolute left-1/2 top-0 w-[3px] h-full bg-gradient-to-b from-cyan-400 via-orange-400 to-cyan-400 opacity-40 -translate-x-1/2"></div>
 
           <div className="flex flex-col gap-28">
-
             {steps.map((step, index) => (
               <motion.div
                 key={index}
@@ -532,11 +526,12 @@ function ProcessSection() {
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
-
                 {/* Center Dot */}
-                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-20 h-20 rounded-full 
+                <div
+                  className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-20 h-20 rounded-full 
                   bg-gradient-to-tr from-cyan-400 to-orange-400 items-center justify-center
-                  text-black font-black text-xl shadow-2xl z-10">
+                  text-black font-black text-xl shadow-2xl z-10"
+                >
                   {step.number}
                 </div>
 
@@ -546,16 +541,16 @@ function ProcessSection() {
                   border border-white/10 rounded-[40px] p-14 shadow-2xl
                   hover:-translate-y-4 transition-all duration-700 overflow-hidden"
                 >
-
                   {/* Hover glow */}
                   <div className="absolute -inset-6 bg-gradient-to-r from-cyan-400/20 to-orange-400/20 blur-3xl opacity-0 group-hover:opacity-100 transition"></div>
 
                   <div className="relative z-10 text-center md:text-left">
-
                     {/* Mobile number */}
-                    <div className="md:hidden w-16 h-16 mx-auto mb-6 rounded-full
+                    <div
+                      className="md:hidden w-16 h-16 mx-auto mb-6 rounded-full
                       bg-gradient-to-tr from-cyan-400 to-orange-400
-                      flex items-center justify-center text-black font-black text-xl shadow-lg">
+                      flex items-center justify-center text-black font-black text-xl shadow-lg"
+                    >
                       {step.number}
                     </div>
 
@@ -573,18 +568,14 @@ function ProcessSection() {
                     </p>
                   </div>
                 </div>
-
               </motion.div>
             ))}
-
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-
 
 /* ================= WHO IT'S FOR ================= */
 

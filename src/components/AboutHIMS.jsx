@@ -107,144 +107,143 @@ export default function AboutHIMS() {
 
       {/* ================= ABOUT SECTION ================= */}
       <section
-        id="about"
-        className="relative py-32 overflow-hidden bg-gradient-to-br from-[#021c28] via-[#023042] to-[#021c28]"
-      >
-        {/* background effects */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#04748B]/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 -right-32 w-96 h-96 bg-[#C85038]/30 rounded-full blur-3xl"></div>
+  id="about"
+  className="relative py-32 overflow-hidden bg-white"
+>
+  {/* background effects */}
+  <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#04748B]/20 rounded-full blur-3xl"></div>
+  <div className="absolute bottom-0 -right-32 w-96 h-96 bg-[#C85038]/20 rounded-full blur-3xl"></div>
 
-        <div className="relative max-w-7xl mx-auto px-6">
-          {/* heading */}
-          <div className="text-center mb-24">
-            <span className="inline-flex items-center gap-2 mb-6 px-6 py-2 text-sm font-semibold tracking-widest uppercase text-cyan-200 bg-white/10 backdrop-blur rounded-full">
-              About Our Platform
-            </span>
+  <div className="relative max-w-7xl mx-auto px-6">
+    {/* heading */}
+    <div className="text-center mb-24">
+      <span className="inline-flex items-center gap-2 mb-6 px-6 py-2 text-sm font-semibold tracking-widest uppercase text-[#053C50] bg-[#053C50]/10 backdrop-blur rounded-full">
+        About Our Platform
+      </span>
 
-            <h2 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
-              Goanny{" "}
-              <span className="bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent">
-                & HIMS
-              </span>
-            </h2>
+      <h2 className="text-4xl md:text-6xl font-extrabold text-[#023042] leading-tight">
+        Goanny{" "}
+        <span className="bg-gradient-to-r from-cyan-500 to-orange-500 bg-clip-text text-transparent">
+          & HIMS
+        </span>
+      </h2>
 
-            <p className="mt-6 max-w-3xl mx-auto text-lg text-cyan-100/80">
-              A modern digital healthcare ecosystem built to transform hospital
-              operations and elevate patient care experiences.
-            </p>
+      <p className="mt-6 max-w-3xl mx-auto text-lg text-[#023042]/80">
+        A modern digital healthcare ecosystem built to transform hospital
+        operations and elevate patient care experiences.
+      </p>
+    </div>
+
+    {/* timeline layout */}
+    <div className="relative grid md:grid-cols-2 gap-x-24 gap-y-20">
+
+      {/* center line */}
+      <div className="hidden md:block absolute left-1/2 top-0 w-[2px] h-full bg-gradient-to-b from-transparent via-[#053C50]/40 to-transparent -translate-x-1/2"></div>
+
+      {[
+        {
+          icon: "🏢",
+          title: "Goanny Technologies",
+          desc: "A product-driven technology company crafting intelligent digital solutions that streamline workflows and enhance user experience.",
+          color: "from-cyan-400 to-cyan-600",
+        },
+        {
+          icon: "🏥",
+          title: "What is HIMS?",
+          desc: "An all-in-one hospital management system covering OPD, IPD, Pharmacy, Lab, Billing, Accounting, and Admin operations.",
+          color: "from-teal-400 to-teal-600",
+        },
+        {
+          icon: "💡",
+          title: "Our Vision",
+          desc: "To revolutionize healthcare through automation, interoperability, and smart decision-making systems.",
+          color: "from-orange-400 to-orange-600",
+        },
+        {
+          icon: "🚀",
+          title: "Our Mission",
+          desc: "To empower hospitals with secure, scalable, and intelligent digital tools that improve outcomes and efficiency.",
+          color: "from-rose-400 to-rose-600",
+        },
+      ].map((item, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: index * 0.15 }}
+          viewport={{ once: true }}
+          className={`relative ${index % 2 === 0 ? "md:pr-16" : "md:pl-16"}`}
+        >
+          {/* dot */}
+          <div className="hidden md:flex absolute top-6 left-1/2 -translate-x-1/2 z-20">
+            <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${item.color} shadow-lg`}></div>
           </div>
 
-          {/* timeline layout */}
-          <div className="relative grid md:grid-cols-2 gap-x-24 gap-y-20">
-            {/* center line */}
-            <div className="hidden md:block absolute left-1/2 top-0 w-[2px] h-full bg-gradient-to-b from-cyan-400/0 via-cyan-400/60 to-cyan-400/0 -translate-x-1/2"></div>
+          {/* card */}
+          <div className="group relative bg-white border border-[#023042]/10 rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500">
+            
+            {/* hover glow */}
+            <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-10 transition bg-gradient-to-br ${item.color}`}></div>
 
-            {[
-              {
-                icon: "🏢",
-                title: "Goanny Technologies",
-                desc: "A product-driven technology company crafting intelligent digital solutions that streamline workflows and enhance user experience.",
-                color: "from-cyan-400 to-cyan-600",
-              },
-              {
-                icon: "🏥",
-                title: "What is HIMS?",
-                desc: "An all-in-one hospital management system covering OPD, IPD, Pharmacy, Lab, Billing, Accounting, and Admin operations.",
-                color: "from-teal-400 to-teal-600",
-              },
-              {
-                icon: "💡",
-                title: "Our Vision",
-                desc: "To revolutionize healthcare through automation, interoperability, and smart decision-making systems.",
-                color: "from-orange-400 to-orange-600",
-              },
-              {
-                icon: "🚀",
-                title: "Our Mission",
-                desc: "To empower hospitals with secure, scalable, and intelligent digital tools that improve outcomes and efficiency.",
-                color: "from-rose-400 to-rose-600",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 80 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                className={`relative ${
-                  index % 2 === 0 ? "md:pr-16" : "md:pl-16"
-                }`}
-              >
-                {/* dot */}
-                <div className="hidden md:flex absolute top-6 left-1/2 -translate-x-1/2 z-20">
-                  <div
-                    className={`w-5 h-5 rounded-full bg-gradient-to-br ${item.color} shadow-lg`}
-                  ></div>
-                </div>
+            <div className="relative z-10">
+              <div className="text-5xl mb-6">{item.icon}</div>
 
-                {/* card */}
-                <div className="group relative bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-10 hover:bg-white/15 transition-all duration-500">
-                  {/* glow */}
-                  <div
-                    className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-30 transition bg-gradient-to-br ${item.color}`}
-                  ></div>
+              <h3 className="text-2xl font-bold mb-4 text-[#023042]">
+                {item.title}
+              </h3>
 
-                  <div className="relative z-10">
-                    <div className="text-5xl mb-6">{item.icon}</div>
-
-                    <h3 className="text-2xl font-bold mb-4 text-white">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-cyan-100/80 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+              <p className="text-[#023042]/70 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
           </div>
+        </motion.div>
+      ))}
+    </div>
 
-          {/* bottom accent */}
-          <div className="mt-32 flex justify-center">
-            <span className="w-44 h-[3px] rounded-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></span>
-          </div>
-        </div>
-      </section>
+    {/* bottom accent */}
+    <div className="mt-32 flex justify-center">
+      <span className="w-44 h-[3px] rounded-full bg-gradient-to-r from-transparent via-[#053C50] to-transparent"></span>
+    </div>
+  </div>
+</section>
+
 
       {/* ================= STATS SECTION ================= */}
-      <section className="py-20 relative overflow-hidden bg-gradient-to-br from-[#023042] via-[#053C50] to-[#023042] text-white border-t border-white/10">
-        {/* Soft accent glows */}
-        <div className="absolute -top-24 -left-24 w-[380px] h-[380px] bg-[#04748B]/30 blur-3xl rounded-full"></div>
-        <div className="absolute -bottom-24 -right-24 w-[380px] h-[380px] bg-[#C85038]/30 blur-3xl rounded-full"></div>
+      <section className="py-20 relative overflow-hidden bg-[#053C50] text-white border-t border-white/10">
+  
+  {/* Soft accent glows */}
+  <div className="absolute -top-24 -left-24 w-[380px] h-[380px] bg-[#04748B]/30 blur-3xl rounded-full"></div>
+  <div className="absolute -bottom-24 -right-24 w-[380px] h-[380px] bg-[#C85038]/30 blur-3xl rounded-full"></div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
-            {[
-              { value: "10+", label: "Years Experience", color: "#04748B" },
-              { value: "100+", label: "Hospitals & Clinics", color: "#C85038" },
-              { value: "1M+", label: "Patient Records", color: "#9C4436" },
-              { value: "99.9%", label: "System Uptime", color: "#04748B" },
-            ].map((stat, index) => (
-              <div key={index}>
-                <p className="text-4xl font-extrabold mb-2">{stat.value}</p>
-                <p className="font-medium" style={{ color: stat.color }}>
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
+  <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+      {[
+        { value: "10+", label: "Years Experience", color: "#04748B" },
+        { value: "100+", label: "Hospitals & Clinics", color: "#C85038" },
+        { value: "1M+", label: "Patient Records", color: "#9C4436" },
+        { value: "99.9%", label: "System Uptime", color: "#04748B" },
+      ].map((stat, index) => (
+        <div key={index}>
+          <p className="text-4xl font-extrabold mb-2">{stat.value}</p>
+          <p className="font-medium" style={{ color: stat.color }}>
+            {stat.label}
+          </p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* ================= CTA SECTION ================= */}
-    <section className="relative block pt-20 pb-20 px-6 text-center bg-gradient-to-br from-[#023042] via-[#053C50] to-[#04748B]">
+    <section className="relative block pt-20 pb-20 px-6 text-center bg-white">
   <div className="max-w-4xl mx-auto">
-    <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+    <h2 className="text-4xl md:text-6xl font-bold text-[#023042] mb-6">
       Ready to Digitize Your Hospital?
     </h2>
 
-    <p className="text-blue-100 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+    <p className="text-[#023042]/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
       Let's build a smarter, faster, and more efficient healthcare system together.
     </p>
 
@@ -253,18 +252,16 @@ export default function AboutHIMS() {
         Contact Us
       </button>
 
-      <button className="border-2 border-[#04748B] text-white hover:bg-[#053C50] px-8 py-4 rounded-full font-bold transition-all duration-300">
+      <button className="border-2 border-[#053C50] text-[#053C50] hover:bg-[#053C50] hover:text-white px-8 py-4 rounded-full font-bold transition-all duration-300">
         View Features
       </button>
     </div>
-    
   </div>
-  
 </section>
+
 
 
     </div>
     
   );
 }
- <section className="bg-gradient-to-br from-[#023042] to-[#053C50] pb-20">... </section>

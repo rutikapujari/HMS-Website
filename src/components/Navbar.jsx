@@ -11,7 +11,7 @@ export default function Navbar() {
 
   const menuItems = [
     { name: "Home", path: "/" },
-    { name: "About HIMS", path: "/about" },
+    { name: "About", path: "/about" },
     { name: "Modules", path: "/modules" },
     { name: "Features", path: "/features" },
     { name: "Solutions", path: "/solutions" },
