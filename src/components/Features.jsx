@@ -17,6 +17,23 @@ import {
   UserCog,
   FileSearch,
 } from "lucide-react";
+import {
+  FaMagic,
+  FaRobot,
+  FaFileInvoiceDollar,
+  FaUserClock,
+  FaBell,
+} from "react-icons/fa";
+import {
+  FaUserCheck,
+  FaMousePointer,
+  FaLayerGroup,
+} from "react-icons/fa";
+import { FaGlobe, FaAndroid, FaApple, FaWindows } from "react-icons/fa";
+import { FaShieldAlt, FaUserShield, FaSearch } from "react-icons/fa";
+import { FaChartBar } from "react-icons/fa";
+
+
 
 /* ===========================
    ANIMATION
@@ -59,25 +76,65 @@ const smartAutomationFeatures = [
     icon: BarChart3,
   },
 ];
+const smartAutomationFeature = [
+  {
+    title: "Automated Billing",
+    desc: "Generate invoices automatically and eliminate manual calculation errors.",
+    icon: FaFileInvoiceDollar,
+  },
+  {
+    title: "Smart Notifications",
+    desc: "Send automatic alerts for appointments, reports and payments.",
+    icon: FaBell,
+  },
+  {
+    title: "User Workflow Tracking",
+    desc: "Monitor staff tasks and patient movement in real-time.",
+    icon: FaUserClock,
+  },
+  {
+    title: "AI Task Automation",
+    desc: "Reduce manual work with intelligent automated processes.",
+    icon: FaRobot,
+  },
+];
 
 /* ===========================
    SECTION 2 DATA
 =========================== */
-const userFriendlyFeatures = [
-  {
-    title: "Simple Interface",
-    desc: "Clean and modern layout designed for effortless interaction and clarity.",
-    icon: Layout,
-  },
+const userFriendlyDesignFeatures = [
   {
     title: "Easy Navigation",
-    desc: "Smooth and intuitive navigation for faster workflow and better productivity.",
-    icon: MousePointerClick,
+    desc: "Simple layout ensures users can move across modules effortlessly.",
+    icon: FaMousePointer,
   },
   {
-    title: "Minimal Training Required",
-    desc: "Designed for instant usability so teams can start working immediately.",
-    icon: GraduationCap,
+    title: "Minimal Learning Curve",
+    desc: "Staff can operate the system without any technical training.",
+    icon: FaUserCheck,
+  },
+  {
+    title: "Modular Interface",
+    desc: "Cleanly structured design improves visibility and productivity.",
+    icon: FaLayerGroup,
+  },
+];
+
+const userFriendlyFeatures = [
+  {
+    title: "Easy Navigation",
+    desc: "Simple layout ensures users can move across modules effortlessly.",
+    icon: FaMousePointer,
+  },
+  {
+    title: "Minimal Learning Curve",
+    desc: "Staff can operate the system without any technical training.",
+    icon: FaUserCheck,
+  },
+  {
+    title: "Modular Interface",
+    desc: "Cleanly structured design improves visibility and productivity.",
+    icon: FaLayerGroup,
   },
 ];
 
@@ -156,128 +213,126 @@ export default function FeaturesPage() {
       {/* ================= SECTION 1 : SMART AUTOMATION =========== */}
       {/* ========================================================= */}
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-cyan-50 py-28">
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-300/20 blur-3xl rounded-full" />
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-300/20 blur-3xl rounded-full" />
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-300/20 blur-3xl rounded-full" />
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-300/20 blur-3xl rounded-full" />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <div className="inline-flex items-center gap-2 bg-cyan-100 text-cyan-700 px-5 py-2 rounded-full text-sm font-semibold mb-5">
-              <Sparkles className="w-4 h-4" />
-              Smart Automation
-            </div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <div className="inline-flex items-center gap-2 bg-cyan-100 text-cyan-700 px-5 py-2 rounded-full text-sm font-semibold mb-5">
+            <FaMagic className="w-4 h-4" />
+            Smart Automation
+          </div>
 
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-800">
-              Intelligent Automation for Faster Operations
-            </h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-800">
+            Intelligent Automation for Faster Operations
+          </h2>
 
-            <p className="text-slate-500 mt-4 max-w-2xl mx-auto">
-              Streamline workflows, reduce manual effort, and boost efficiency
-              with powerful automation tools.
-            </p>
-          </motion.div>
+          <p className="text-slate-500 mt-4 max-w-2xl mx-auto">
+            Streamline workflows, reduce manual effort, and boost efficiency
+            with powerful automation tools.
+          </p>
+        </motion.div>
 
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
-            {smartAutomationFeatures.map((feature, i) => {
-              const Icon = feature.icon;
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  className="group relative"
-                >
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 group-hover:opacity-20 blur-xl transition duration-500" />
-                  <div className="relative bg-white/80 backdrop-blur-xl border border-slate-200 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-500">
-                    <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white mb-6 shadow-lg group-hover:scale-110 transition">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-800 mb-3">
-                      {feature.title}
-                    </h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">
-                      {feature.desc}
-                    </p>
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {smartAutomationFeatures.map((feature, i) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div key={i} variants={fadeUp} className="group relative">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 group-hover:opacity-20 blur-xl transition duration-500" />
+                <div className="relative bg-white/80 backdrop-blur-xl border border-slate-200 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-500">
+                  <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white mb-6 shadow-lg group-hover:scale-110 transition">
+                    <Icon className="w-6 h-6" />
                   </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
+                  <h3 className="text-xl font-bold text-slate-800 mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">
+                    {feature.desc}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
 
       {/* ========================================================= */}
       {/* ============ SECTION 2 : USER FRIENDLY DESIGN =========== */}
       {/* ========================================================= */}
       <section className="relative py-28 bg-[#053C50] text-white overflow-hidden">
-        <div className="absolute w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-3xl -top-40 -left-40 animate-pulse" />
-        <div className="absolute w-[600px] h-[600px] bg-purple-500/30 rounded-full blur-3xl -bottom-40 -right-40 animate-pulse" />
+      <div className="absolute w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-3xl -top-40 -left-40 animate-pulse" />
+      <div className="absolute w-[600px] h-[600px] bg-purple-500/30 rounded-full blur-3xl -bottom-40 -right-40 animate-pulse" />
 
-        <div className="relative max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-              User Friendly Design
-            </h2>
+      <div className="relative max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
+            User Friendly Design
+          </h2>
 
-            <p className="text-slate-300 max-w-2xl mx-auto text-lg">
-              Designed for simplicity and efficiency so anyone can use the
-              system easily.
-            </p>
-          </motion.div>
+          <p className="text-slate-300 max-w-2xl mx-auto text-lg">
+            Designed for simplicity and efficiency so anyone can use the
+            system easily.
+          </p>
+        </motion.div>
 
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-10"
-          >
-            {userFriendlyFeatures.map((feature, i) => {
-              const Icon = feature.icon;
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-10"
+        >
+          {userFriendlyFeatures.map((feature, i) => {
+            const Icon = feature.icon;
 
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  className="group relative"
-                >
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 opacity-0 group-hover:opacity-100 blur-md transition duration-500" />
-                  <div className="relative h-full rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 p-10 hover:scale-105 transition duration-500 shadow-2xl">
-                    <div className="w-16 h-16 flex items-center justify-center rounded-2xl mb-6 bg-gradient-to-br from-cyan-400 to-purple-500 text-white shadow-xl">
-                      <Icon className="w-7 h-7" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-                    <p className="text-slate-300 leading-relaxed">
-                      {feature.desc}
-                    </p>
+            return (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                className="group relative"
+              >
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 opacity-0 group-hover:opacity-100 blur-md transition duration-500" />
+                <div className="relative h-full rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 p-10 hover:scale-105 transition duration-500 shadow-2xl">
+                  <div className="w-16 h-16 flex items-center justify-center rounded-2xl mb-6 bg-gradient-to-br from-cyan-400 to-purple-500 text-white shadow-xl">
+                    <Icon className="w-7 h-7" />
                   </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
+                  <h3 className="text-2xl font-bold mb-4">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-300 leading-relaxed">
+                    {feature.desc}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
 
       {/* ========================================================= */}
       {/* ========== SECTION 3 : MULTI PLATFORM SUPPORT =========== */}
       {/* ========================================================= */}
-     <section className="relative py-32 bg-white text-[#023042] overflow-hidden">
+    <section className="relative py-32 bg-white text-[#023042] overflow-hidden">
 
   {/* neon grid background */}
   <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,rgba(4,116,139,0.4)_0,transparent_60%)]" />
@@ -329,7 +384,7 @@ export default function FeaturesPage() {
           className="absolute top-0 left-1/2 -translate-x-1/2 group"
         >
           <div className="w-28 h-28 rounded-3xl bg-white/5 backdrop-blur-xl border border-[#04748B]/30 flex flex-col items-center justify-center shadow-xl hover:scale-110 transition">
-            <Globe className="w-8 h-8 text-[#04748B] mb-2" />
+            <FaGlobe className="w-8 h-8 text-[#04748B] mb-2" />
             <span className="text-sm font-semibold text-[#023042]">Web</span>
           </div>
         </motion.div>
@@ -340,7 +395,7 @@ export default function FeaturesPage() {
           className="absolute right-0 top-1/2 -translate-y-1/2 group"
         >
           <div className="w-28 h-28 rounded-3xl bg-white/5 backdrop-blur-xl border border-[#C85038]/30 flex flex-col items-center justify-center shadow-xl hover:scale-110 transition">
-            <Smartphone className="w-8 h-8 text-[#C85038] mb-2" />
+            <FaAndroid className="w-8 h-8 text-[#C85038] mb-2" />
             <span className="text-sm font-semibold text-[#023042]">Android</span>
           </div>
         </motion.div>
@@ -351,7 +406,7 @@ export default function FeaturesPage() {
           className="absolute bottom-0 left-1/2 -translate-x-1/2 group"
         >
           <div className="w-28 h-28 rounded-3xl bg-white/5 backdrop-blur-xl border border-[#9C4436]/30 flex flex-col items-center justify-center shadow-xl hover:scale-110 transition">
-            <Smartphone className="w-8 h-8 text-[#9C4436] mb-2" />
+            <FaApple className="w-8 h-8 text-[#9C4436] mb-2" />
             <span className="text-sm font-semibold text-[#023042]">iPhone</span>
           </div>
         </motion.div>
@@ -362,7 +417,7 @@ export default function FeaturesPage() {
           className="absolute left-0 top-1/2 -translate-y-1/2 group"
         >
           <div className="w-28 h-28 rounded-3xl bg-white/5 backdrop-blur-xl border border-[#04748B]/30 flex flex-col items-center justify-center shadow-xl hover:scale-110 transition">
-            <Monitor className="w-8 h-8 text-[#04748B] mb-2" />
+            <FaWindows className="w-8 h-8 text-[#04748B] mb-2" />
             <span className="text-sm font-semibold text-[#023042]">Windows</span>
           </div>
         </motion.div>
@@ -376,117 +431,117 @@ export default function FeaturesPage() {
       {/* ============== SECTION 4 : DATA & SECURITY ============== */}
       {/* ========================================================= */}
      <section className="relative py-32 bg-[#053C50] text-white overflow-hidden">
-  {/* cyber grid background */}
-  <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(#22d3ee_1px,transparent_1px),linear-gradient(90deg,#22d3ee_1px,transparent_1px)] bg-[size:60px_60px]" />
+      {/* cyber grid background */}
+      <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(#22d3ee_1px,transparent_1px),linear-gradient(90deg,#22d3ee_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-  {/* glowing radial light */}
-  <div className="absolute top-1/2 left-1/2 w-[700px] h-[700px] -translate-x-1/2 -translate-y-1/2 bg-cyan-500/20 blur-[140px] rounded-full" />
+      {/* glowing radial light */}
+      <div className="absolute top-1/2 left-1/2 w-[700px] h-[700px] -translate-x-1/2 -translate-y-1/2 bg-cyan-500/20 blur-[140px] rounded-full" />
 
-  <div className="relative max-w-7xl mx-auto px-6">
-    {/* heading */}
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-      className="text-center mb-24"
-    >
-      <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-        Data & Security
-      </h2>
+      <div className="relative max-w-7xl mx-auto px-6">
+        {/* heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-24"
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
+            Data & Security
+          </h2>
 
-      <p className="text-cyan-300/80 max-w-2xl mx-auto text-lg">
-        Enterprise-grade protection to keep your data safe, controlled,
-        and fully traceable at all times.
-      </p>
-    </motion.div>
-
-    {/* security cards */}
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={{
-        visible: { transition: { staggerChildren: 0.2 } },
-      }}
-      className="grid md:grid-cols-3 gap-10"
-    >
-      {/* Secure Data Storage */}
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 50 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        className="relative group"
-      >
-        <div className="absolute inset-0 bg-cyan-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl" />
-
-        <div className="relative p-10 rounded-3xl border border-cyan-400/30 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-xl shadow-2xl hover:scale-105 transition">
-          <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-cyan-500/20 border border-cyan-400/40 mb-6">
-            <ShieldCheck className="w-8 h-8 text-cyan-400" />
-          </div>
-
-          <h3 className="text-xl font-bold mb-3">Secure Data Storage</h3>
-          <p className="text-slate-300 leading-relaxed">
-            Advanced encryption and protected infrastructure ensure your
-            sensitive data remains safe and fully protected.
+          <p className="text-cyan-300/80 max-w-2xl mx-auto text-lg">
+            Enterprise-grade protection to keep your data safe, controlled,
+            and fully traceable at all times.
           </p>
-        </div>
-      </motion.div>
+        </motion.div>
 
-      {/* Role Based Access */}
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 50 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        className="relative group"
-      >
-        <div className="absolute inset-0 bg-purple-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl" />
+        {/* security cards */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.2 } },
+          }}
+          className="grid md:grid-cols-3 gap-10"
+        >
+          {/* Secure Data Storage */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            className="relative group"
+          >
+            <div className="absolute inset-0 bg-cyan-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl" />
 
-        <div className="relative p-10 rounded-3xl border border-purple-400/30 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-xl shadow-2xl hover:scale-105 transition">
-          <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-purple-500/20 border border-purple-400/40 mb-6">
-            <UserCog className="w-8 h-8 text-purple-400" />
-          </div>
+            <div className="relative p-10 rounded-3xl border border-cyan-400/30 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-xl shadow-2xl hover:scale-105 transition">
+              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-cyan-500/20 border border-cyan-400/40 mb-6">
+                <FaShieldAlt className="w-8 h-8 text-cyan-400" />
+              </div>
 
-          <h3 className="text-xl font-bold mb-3">Role-Based Access</h3>
-          <p className="text-slate-300 leading-relaxed">
-            Control permissions with precision. Grant access only to the
-            right people with secure role-based authorization.
-          </p>
-        </div>
-      </motion.div>
+              <h3 className="text-xl font-bold mb-3">Secure Data Storage</h3>
+              <p className="text-slate-300 leading-relaxed">
+                Advanced encryption and protected infrastructure ensure your
+                sensitive data remains safe and fully protected.
+              </p>
+            </div>
+          </motion.div>
 
-      {/* Audit Trails */}
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 50 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        className="relative group"
-      >
-        <div className="absolute inset-0 bg-emerald-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl" />
+          {/* Role Based Access */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            className="relative group"
+          >
+            <div className="absolute inset-0 bg-purple-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl" />
 
-        <div className="relative p-10 rounded-3xl border border-emerald-400/30 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-xl shadow-2xl hover:scale-105 transition">
-          <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-emerald-500/20 border border-emerald-400/40 mb-6">
-            <FileSearch className="w-8 h-8 text-emerald-400" />
-          </div>
+            <div className="relative p-10 rounded-3xl border border-purple-400/30 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-xl shadow-2xl hover:scale-105 transition">
+              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-purple-500/20 border border-purple-400/40 mb-6">
+                <FaUserShield className="w-8 h-8 text-purple-400" />
+              </div>
 
-          <h3 className="text-xl font-bold mb-3">Audit Trails</h3>
-          <p className="text-slate-300 leading-relaxed">
-            Track every activity with detailed logs for full transparency,
-            accountability, and compliance monitoring.
-          </p>
-        </div>
-      </motion.div>
-    </motion.div>
-  </div>
-</section>
+              <h3 className="text-xl font-bold mb-3">Role-Based Access</h3>
+              <p className="text-slate-300 leading-relaxed">
+                Control permissions with precision. Grant access only to the
+                right people with secure role-based authorization.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Audit Trails */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            className="relative group"
+          >
+            <div className="absolute inset-0 bg-emerald-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl" />
+
+            <div className="relative p-10 rounded-3xl border border-emerald-400/30 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-xl shadow-2xl hover:scale-105 transition">
+              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-emerald-500/20 border border-emerald-400/40 mb-6">
+                <FaSearch className="w-8 h-8 text-emerald-400" />
+              </div>
+
+              <h3 className="text-xl font-bold mb-3">Audit Trails</h3>
+              <p className="text-slate-300 leading-relaxed">
+                Track every activity with detailed logs for full transparency,
+                accountability, and compliance monitoring.
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
 
       {/* ========================================================= */}
       {/* ================= SECTION 5 : REPORTING SYSTEM =========== */}
       {/* ========================================================= */}
-     <section className="relative py-32 overflow-hidden bg-white text-[#023042]">
+    <section className="relative py-32 overflow-hidden bg-white text-[#023042]">
   {/* animated grid background */}
   <div className="absolute inset-0 opacity-20">
     <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.15)_1px,transparent_1px)] bg-[size:40px_40px]" />
@@ -534,7 +589,7 @@ export default function FeaturesPage() {
       <div className="relative rounded-[32px] border border-[#04748B]/30 bg-white/5 backdrop-blur-2xl p-14 shadow-[0_0_60px_rgba(34,211,238,0.15)]">
         {/* icon */}
         <div className="mx-auto w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#04748B] to-[#023042] shadow-2xl mb-8">
-          <BarChart3 className="w-10 h-10 text-white" />
+          <FaChartBar className="w-10 h-10 text-white" />
         </div>
 
         {/* title */}

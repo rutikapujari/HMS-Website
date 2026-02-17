@@ -2,6 +2,34 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import {
+  FaRegEdit,
+  FaIdCard,
+  FaCalendarCheck,
+  FaCreditCard,
+  FaLink,
+  FaClock
+} from "react-icons/fa";
+import {
+  FaPills,
+  FaClipboardList,
+  FaFileInvoice,
+  FaPaperclip
+} from "react-icons/fa";
+import {
+  FaBed,
+  FaExchangeAlt,
+  FaHospital,
+  FaUserMd,
+  FaChartBar,
+} from "react-icons/fa";
+import {
+  FaSms,
+  FaCloud,
+  FaUsers
+} from "react-icons/fa";
+
+
 
 /* ================= MODULE DATA ================= */
 const coreModules = [
@@ -108,23 +136,24 @@ function CoreModules() {
 
 /* ================= PATIENT MANAGEMENT ================= */
 function PatientManagement() {
+
   const items = [
-    { title: "Patient Registration", icon: "📝" },
-    { title: "UHID Assignment", icon: "🆔" },
-    { title: "Online Appointment", icon: "📅" },
-    { title: "Insurance Management", icon: "💳" },
-    { title: "Referral Management", icon: "🔗" },
-    { title: "Queue Management", icon: "⏱️" },
+    { title: "Patient Registration", icon: <FaRegEdit /> },
+    { title: "UHID Assignment", icon: <FaIdCard /> },
+    { title: "Online Appointment", icon: <FaCalendarCheck /> },
+    { title: "Insurance Management", icon: <FaCreditCard /> },
+    { title: "Referral Management", icon: <FaLink /> },
+    { title: "Queue Management", icon: <FaClock /> },
   ];
 
   return (
     <section className="relative py-28 bg-[#053C50] overflow-hidden">
-      {/* background accents */}
+      
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#04748B]/30 rounded-full blur-[120px]" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#C85038]/25 rounded-full blur-[120px]" />
 
       <div className="relative max-w-7xl mx-auto px-6">
-        {/* header */}
+
         <div className="text-center mb-24">
           <span className="inline-block mb-4 px-5 py-1.5 text-sm font-semibold tracking-wide text-[#04748B] bg-white/10 rounded-full">
             Patient Lifecycle
@@ -141,7 +170,6 @@ function PatientManagement() {
           </p>
         </div>
 
-        {/* zig-zag cards */}
         <div className="relative space-y-16">
           {items.map((item, i) => (
             <div
@@ -150,12 +178,11 @@ function PatientManagement() {
                 i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
             >
-              {/* icon block */}
+
               <div className="flex-shrink-0 w-24 h-24 rounded-3xl bg-gradient-to-br from-[#04748B] to-[#023042] text-white text-4xl flex items-center justify-center shadow-xl">
                 {item.icon}
               </div>
 
-              {/* content card */}
               <div className="group relative bg-white rounded-3xl p-8 shadow-xl border border-white/10 max-w-xl hover:shadow-2xl transition">
                 <h3 className="text-xl font-bold text-[#023042] group-hover:text-[#04748B] transition">
                   {item.title}
@@ -173,13 +200,14 @@ function PatientManagement() {
                 <div className="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-[#04748B] to-[#C85038]" />
               </div>
 
-              {/* connector line */}
               {i !== items.length - 1 && (
                 <div className="hidden md:block absolute left-1/2 -bottom-16 w-[2px] h-16 bg-white/30" />
               )}
+
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
@@ -189,11 +217,11 @@ function PatientManagement() {
 /* ================= CLINICAL MODULE ================= */
 function ClinicalModules() {
   const items = [
-    { title: "Doctor Scheduling", icon: "📅" },
-    { title: "Prescription Management", icon: "💊" },
-    { title: "Health Records", icon: "📋" },
-    { title: "ICD Code Diagnosis", icon: "🧾" },
-    { title: "Report Attachments", icon: "📎" },
+    { title: "Doctor Scheduling", icon: <FaCalendarCheck /> },
+    { title: "Prescription Management", icon: <FaPills /> },
+    { title: "Health Records", icon: <FaClipboardList /> },
+    { title: "ICD Code Diagnosis", icon: <FaFileInvoice /> },
+    { title: "Report Attachments", icon: <FaPaperclip /> },
   ];
 
   return (
@@ -285,13 +313,13 @@ function ClinicalModules() {
 
 
 /* ================= ADMINISTRATIVE MODULE ================= */
-function AdministrativeModules() {
+export function AdministrativeModules() {
   const items = [
-    { title: "Ward & Bed Management", icon: "🛏️" },
-    { title: "Room Transfer", icon: "🔄" },
-    { title: "OT Management", icon: "🏥" },
-    { title: "Surgery Counseling", icon: "🩺" },
-    { title: "MIS Reporting", icon: "📊" },
+    { title: "Ward & Bed Management", icon: <FaBed /> },
+    { title: "Room Transfer", icon: <FaExchangeAlt /> },
+    { title: "OT Management", icon: <FaHospital /> },
+    { title: "Surgery Counseling", icon: <FaUserMd /> },
+    { title: "MIS Reporting", icon: <FaChartBar /> },
   ];
 
   return (
@@ -364,12 +392,13 @@ function AdministrativeModules() {
 
 
 /* ================= ADD-ON MODULE ================= */
-function AddOnModules() {
+export function AddOnModules() {
+
   const items = [
-    { title: "Queue Management System", icon: "⏱️" },
-    { title: "SMS Integration", icon: "📱" },
-    { title: "Cloud Hosting", icon: "☁️" },
-    { title: "Multi-User System", icon: "👥" },
+    { title: "Queue Management System", icon: <FaClock /> },
+    { title: "SMS Integration", icon: <FaSms /> },
+    { title: "Cloud Hosting", icon: <FaCloud /> },
+    { title: "Multi-User System", icon: <FaUsers /> },
   ];
 
   return (

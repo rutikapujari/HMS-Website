@@ -19,15 +19,25 @@ import {
   FiClock,
 } from "react-icons/fi";
 
+import {
+  FaUserMd,
+  FaUserNurse,
+  FaHospitalUser,
+  FaFileInvoiceDollar,
+  FaUserShield,
+  FaUserCog,
+} from "react-icons/fa";
+
 export default function HIMSPage() {
-  const whoCanUse = [
-    { name: "Multi-Specialty Hospitals", icon: <FiHome /> },
-    { name: "Clinics", icon: <FiBriefcase /> },
-    { name: "Nursing Homes", icon: <FiUserCheck /> },
-    { name: "Diagnostic Centers", icon: <FiActivity /> },
-    { name: "Medical Colleges", icon: <FiBook /> },
-    { name: "Healthcare Groups", icon: <FiUsers /> },
-  ];
+ const whoCanUse = [
+  { name: "Doctors", icon: <FaUserMd /> },
+  { name: "Nurses", icon: <FaUserNurse /> },
+  { name: "Patients", icon: <FaHospitalUser /> },
+  { name: "Billing Staff", icon: <FaFileInvoiceDollar /> },
+  { name: "Receptionist", icon: <FaUserShield /> },
+  { name: "Admin", icon: <FaUserCog /> },
+];
+
 
   const platformFeatures = [
     { name: "Cloud Based", icon: <FiCloud /> },
@@ -55,6 +65,32 @@ export default function HIMSPage() {
     "Billing & Accounts",
     "Appointments & Scheduling",
   ];
+const whoCanUses = [
+  {
+    name: "Doctors",
+    icon: <FaUserMd />,
+  },
+  {
+    name: "Nurses",
+    icon: <FaUserNurse />,
+  },
+  {
+    name: "Patients",
+    icon: <FaHospitalUser />,
+  },
+  {
+    name: "Billing Staff",
+    icon: <FaFileInvoiceDollar />,
+  },
+  {
+    name: "Receptionist",
+    icon: <FaUserShield />,
+  },
+  {
+    name: "Admin",
+    icon: <FaUserCog />,
+  },
+];
 
   return (
     <>
@@ -258,62 +294,62 @@ export default function HIMSPage() {
 
 
       {/* ================= WHO CAN USE HIMS ================= */}
-      <section className="relative py-32 bg-white overflow-hidden">
+     <section className="relative py-32 bg-white overflow-hidden">
 
-  {/* Soft Brand Glow */}
-  <div className="absolute -top-24 left-0 w-96 h-96 bg-[#053C50]/10 blur-[120px] rounded-full" />
-  <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#023042]/10 blur-[100px] rounded-full" />
+      {/* Soft Brand Glow */}
+      <div className="absolute -top-24 left-0 w-96 h-96 bg-[#053C50]/10 blur-[120px] rounded-full" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#023042]/10 blur-[100px] rounded-full" />
 
-  <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto px-6">
 
-    {/* Header */}
-    <div className="max-w-3xl mb-20">
-      <h2 className="text-4xl md:text-5xl font-extrabold text-[#023042] leading-tight">
-        Who Can <span className="text-[#053C50]">Use HIMS</span>
-      </h2>
-      <p className="mt-5 text-lg text-[#023042]/80">
-        Designed to empower every stakeholder in the hospital ecosystem
-        with role-based access and intelligent workflows.
-      </p>
-    </div>
-
-    {/* Stepped Layout */}
-    <div className="space-y-8">
-      {whoCanUse.map((item, index) => (
-        <div
-          key={index}
-          className={`group flex flex-col md:flex-row items-center gap-8
-          p-8 md:p-10 rounded-3xl bg-white
-          border border-[#023042]/10 shadow-md hover:shadow-2xl
-          transition-all duration-500 hover:-translate-y-1
-          ${index % 2 === 0 ? "md:ml-0" : "md:ml-20"}`}
-        >
-          {/* Icon */}
-          <div
-            className="w-20 h-20 flex items-center justify-center rounded-2xl
-            bg-gradient-to-br from-[#023042] to-[#053C50]
-            text-white text-3xl font-bold shadow-lg"
-          >
-            {item.icon}
-          </div>
-
-          {/* Text */}
-          <div className="text-center md:text-left">
-            <h3 className="text-2xl font-semibold text-[#023042] mb-2 group-hover:text-[#053C50] transition">
-              {item.name}
-            </h3>
-            <p className="text-[#023042]/70 max-w-xl">
-              Secure, intuitive access tailored specifically for this role
-              to ensure efficiency and accountability across hospital
-              operations.
-            </p>
-          </div>
+        {/* Header */}
+        <div className="max-w-3xl mb-20">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#023042] leading-tight">
+            Who Can <span className="text-[#053C50]">Use HIMS</span>
+          </h2>
+          <p className="mt-5 text-lg text-[#023042]/80">
+            Designed to empower every stakeholder in the hospital ecosystem
+            with role-based access and intelligent workflows.
+          </p>
         </div>
-      ))}
-    </div>
 
-  </div>
-</section>
+        {/* Stepped Layout */}
+        <div className="space-y-8">
+          {whoCanUse.map((item, index) => (
+            <div
+              key={index}
+              className={`group flex flex-col md:flex-row items-center gap-8
+              p-8 md:p-10 rounded-3xl bg-white
+              border border-[#023042]/10 shadow-md hover:shadow-2xl
+              transition-all duration-500 hover:-translate-y-1
+              ${index % 2 === 0 ? "md:ml-0" : "md:ml-20"}`}
+            >
+              {/* Icon */}
+              <div
+                className="w-20 h-20 flex items-center justify-center rounded-2xl
+                bg-gradient-to-br from-[#023042] to-[#053C50]
+                text-white text-3xl font-bold shadow-lg"
+              >
+                {item.icon}
+              </div>
+
+              {/* Text */}
+              <div className="text-center md:text-left">
+                <h3 className="text-2xl font-semibold text-[#023042] mb-2 group-hover:text-[#053C50] transition">
+                  {item.name}
+                </h3>
+                <p className="text-[#023042]/70 max-w-xl">
+                  Secure, intuitive access tailored specifically for this role
+                  to ensure efficiency and accountability across hospital
+                  operations.
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
 
 
       {/* ================= TECHNOLOGY PLATFORM ================= */}

@@ -3,6 +3,13 @@ import Link from "next/link";
 
 import { motion } from "framer-motion";
 import { Building2, Hospital, Lightbulb, Rocket } from "lucide-react";
+import {
+  FaBuilding,
+  FaHospital,
+  FaLightbulb,
+  FaRocket,
+} from "react-icons/fa";
+
 
 export default function AboutHIMS() {
   const containerVariants = {
@@ -106,7 +113,7 @@ export default function AboutHIMS() {
       </section>
 
       {/* ================= ABOUT SECTION ================= */}
-      <section
+    <section
   id="about"
   className="relative py-32 overflow-hidden bg-white"
 >
@@ -142,25 +149,25 @@ export default function AboutHIMS() {
 
       {[
         {
-          icon: "🏢",
+          icon: <FaBuilding />,
           title: "Goanny Technologies",
           desc: "A product-driven technology company crafting intelligent digital solutions that streamline workflows and enhance user experience.",
           color: "from-cyan-400 to-cyan-600",
         },
         {
-          icon: "🏥",
+          icon: <FaHospital />,
           title: "What is HIMS?",
           desc: "An all-in-one hospital management system covering OPD, IPD, Pharmacy, Lab, Billing, Accounting, and Admin operations.",
           color: "from-teal-400 to-teal-600",
         },
         {
-          icon: "💡",
+          icon: <FaLightbulb />,
           title: "Our Vision",
           desc: "To revolutionize healthcare through automation, interoperability, and smart decision-making systems.",
           color: "from-orange-400 to-orange-600",
         },
         {
-          icon: "🚀",
+          icon: <FaRocket />,
           title: "Our Mission",
           desc: "To empower hospitals with secure, scalable, and intelligent digital tools that improve outcomes and efficiency.",
           color: "from-rose-400 to-rose-600",
@@ -186,7 +193,9 @@ export default function AboutHIMS() {
             <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-10 transition bg-gradient-to-br ${item.color}`}></div>
 
             <div className="relative z-10">
-              <div className="text-5xl mb-6">{item.icon}</div>
+              <div className="text-5xl mb-6 text-[#023042]">
+                {item.icon}
+              </div>
 
               <h3 className="text-2xl font-bold mb-4 text-[#023042]">
                 {item.title}

@@ -1,15 +1,69 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {
+  FaUserInjured,
+  FaFileInvoiceDollar,
+  FaProcedures,
+  FaFlask,
+  FaPills,
+  FaHospital
+} from "react-icons/fa";
+
 
 /* ================= ANIMATION ================= */
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
 };
+const solutions = [
+  {
+    title: "Patient Management",
+    subtitle: "Complete Patient Lifecycle Tracking",
+    desc: "Digitally manage patient registration, appointments, and medical history with ease.",
+    icon: <FaUserInjured className="text-white" />,
+    color: "from-[#04748B] to-[#023042]",
+  },
+  {
+    title: "Billing System",
+    subtitle: "Automated Financial Workflow",
+    desc: "Smart billing with insurance integration, invoice generation, and real-time reporting.",
+    icon: <FaFileInvoiceDollar className="text-white" />,
+    color: "from-[#C85038] to-[#9C4436]",
+  },
+  {
+    title: "Ward Management",
+    subtitle: "Bed & Room Allocation",
+    desc: "Efficient ward planning with real-time bed tracking and patient allocation.",
+    icon: <FaProcedures className="text-white" />,
+    color: "from-[#04748B] to-[#C85038]",
+  },
+  {
+    title: "Laboratory",
+    subtitle: "Diagnostic Integration",
+    desc: "Manage test reports, diagnostics workflows, and lab inventory seamlessly.",
+    icon: <FaFlask className="text-white" />,
+    color: "from-[#9C4436] to-[#04748B]",
+  },
+  {
+    title: "Pharmacy",
+    subtitle: "Inventory & Dispensing",
+    desc: "Track medicine inventory and automate dispensing workflows securely.",
+    icon: <FaPills className="text-white" />,
+    color: "from-[#C85038] to-[#04748B]",
+  },
+  {
+    title: "Hospital Dashboard",
+    subtitle: "Centralized Overview",
+    desc: "Monitor operations, performance, and analytics in one unified interface.",
+    icon: <FaHospital className="text-white" />,
+    color: "from-[#04748B] to-[#9C4436]",
+  },
+];
+
 
 /* ================= SOLUTIONS DATA ================= */
-const solutions = [
+const hospitalSolutions = [
   {
     title: "OPD Management",
     subtitle: "Smart Outpatient Workflow",
@@ -90,80 +144,81 @@ export default function SolutionsPage() {
 
       {/* ================= SOLUTIONS ================= */}
       <section id="solutions" className="relative py-36 bg-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,#04748b33,transparent_45%),radial-gradient(circle_at_80%_70%,#c8503833,transparent_45%)]"></div>
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,#04748b33,transparent_45%),radial-gradient(circle_at_80%_70%,#c8503833,transparent_45%)]"></div>
 
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="text-center mb-32">
-            <span className="inline-flex px-7 py-2 text-xs font-semibold tracking-[0.35em] uppercase text-[#04748B] bg-white/5 backdrop-blur-xl rounded-full border border-[#023042]/20 mb-6">
-              What We Offer
-            </span>
+  <div className="relative max-w-7xl mx-auto px-6">
+    <div className="text-center mb-32">
+      <span className="inline-flex px-7 py-2 text-xs font-semibold tracking-[0.35em] uppercase text-[#04748B] bg-white/5 backdrop-blur-xl rounded-full border border-[#023042]/20 mb-6">
+        What We Offer
+      </span>
 
-            <h2 className="text-4xl md:text-7xl font-extrabold text-[#023042]">
-              Smart Hospital{" "}
-              <span className="bg-gradient-to-r from-[#C85038] to-[#9C4436] bg-clip-text text-transparent">
-                Solutions
-              </span>
-            </h2>
+      <h2 className="text-4xl md:text-7xl font-extrabold text-[#023042]">
+        Smart Hospital{" "}
+        <span className="bg-gradient-to-r from-[#C85038] to-[#9C4436] bg-clip-text text-transparent">
+          Solutions
+        </span>
+      </h2>
 
-            <p className="mt-7 max-w-3xl mx-auto text-lg text-[#04748B]/80">
-              Purpose-built healthcare modules designed to simplify workflows,
-              improve efficiency, and enhance patient outcomes.
-            </p>
+      <p className="mt-7 max-w-3xl mx-auto text-lg text-[#04748B]/80">
+        Purpose-built healthcare modules designed to simplify workflows,
+        improve efficiency, and enhance patient outcomes.
+      </p>
+    </div>
+
+    <div className="space-y-28">
+      {solutions.map((item, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 120 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9 }}
+          className="grid lg:grid-cols-3 gap-16 items-center"
+        >
+          {/* ICON */}
+          <div className="hidden lg:flex justify-center">
+            <div
+              className={`w-32 h-32 rounded-full flex items-center justify-center text-6xl bg-gradient-to-br ${item.color} shadow-2xl`}
+            >
+              {item.icon}
+            </div>
           </div>
 
-          <div className="space-y-28">
-            {solutions.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 120 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9 }}
-                className="grid lg:grid-cols-3 gap-16 items-center"
+          {/* CONTENT */}
+          <div className="lg:col-span-2 relative group">
+            <div
+              className={`absolute -inset-[2px] rounded-3xl bg-gradient-to-r ${item.color} opacity-30 group-hover:opacity-80 transition`}
+            ></div>
+
+            <div className="relative rounded-3xl bg-white/5 backdrop-blur-2xl border border-[#023042]/10 p-12">
+              <span
+                className={`inline-block mb-5 px-6 py-2 rounded-full text-sm font-semibold bg-gradient-to-r ${item.color} text-[#023042]`}
               >
-                {/* ICON */}
-                <div className="hidden lg:flex justify-center">
-                  <div
-                    className={`w-32 h-32 rounded-full flex items-center justify-center text-6xl bg-gradient-to-br ${item.color} shadow-2xl`}
-                  >
-                    {item.icon}
-                  </div>
-                </div>
+                {item.title}
+              </span>
 
-                {/* CONTENT */}
-                <div className="lg:col-span-2 relative group">
-                  <div
-                    className={`absolute -inset-[2px] rounded-3xl bg-gradient-to-r ${item.color} opacity-30 group-hover:opacity-80 transition`}
-                  ></div>
+              <h3 className="text-3xl font-bold mb-4 text-[#9C4436]">
+                {item.subtitle}
+              </h3>
 
-                  <div className="relative rounded-3xl bg-white/5 backdrop-blur-2xl border border-[#023042]/10 p-12">
-                    <span
-                      className={`inline-block mb-5 px-6 py-2 rounded-full text-sm font-semibold bg-gradient-to-r ${item.color} text-[#023042]`}
-                    >
-                      {item.title}
-                    </span>
+              <p className="text-[#04748B]/80 mb-8">{item.desc}</p>
 
-                    <h3 className="text-3xl font-bold mb-4 text-[#9C4436]">
-                      {item.subtitle}
-                    </h3>
+              <a
+                href="/contact"
+                className="inline-flex items-center gap-3 font-semibold text-[#04748B] hover:text-[#C85038] transition"
+              >
+                Explore Module →
+              </a>
 
-                    <p className="text-[#04748B]/80 mb-8">{item.desc}</p>
-
-                    <a
-                      href="/contact"
-                      className="inline-flex items-center gap-3 font-semibold text-[#04748B] hover:text-[#C85038] transition"
-                    >
-                      Explore Module →
-                    </a>
-
-                    <div className="mt-8 h-[2px] w-0 group-hover:w-32 transition-all duration-500 bg-[#053C50]"></div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+              <div className="mt-8 h-[2px] w-0 group-hover:w-32 transition-all duration-500 bg-[#053C50]"></div>
+            </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
     </div>
   );
 }

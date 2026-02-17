@@ -2,6 +2,18 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { FaFileAlt, FaMoneyBillWave, FaLock } from "react-icons/fa";
+import {
+  FaLaptopMedical,
+  FaChartLine,
+  FaBolt,
+  FaRocket,
+} from "react-icons/fa";import { FaRobot, FaBrain, FaCogs } from "react-icons/fa";
+import { FaTools, FaBookOpen } from "react-icons/fa";
+import { FaHospital, FaClinicMedical, FaFlask, FaGlobe } from "react-icons/fa";
+
+
+
 
 /* ================= PAGE ================= */
 
@@ -154,32 +166,30 @@ function PainPoints() {
     {
       title: "Manual Processes",
       text: "Paper files, human errors & delayed reports.",
-      icon: "📄",
+      icon: FaFileAlt,
       gradient: "from-[#053C50] to-[#04748B]",
     },
     {
       title: "Revenue Leakage",
       text: "Billing gaps, missed charges & inefficiencies.",
-      icon: "💸",
+      icon: FaMoneyBillWave,
       gradient: "from-[#9C4436] to-[#C85038]",
     },
     {
       title: "Compliance Pressure",
       text: "ABHA, audits & data security challenges.",
-      icon: "🔒",
+      icon: FaLock,
       gradient: "from-[#023042] to-[#053C50]",
     },
   ];
 
   return (
     <section className="relative py-32 overflow-hidden bg-white">
-      {/* Background texture + glow */}
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#ffffff,transparent_40%,#ffffff)]"></div>
       <div className="absolute top-0 left-1/2 w-[50rem] h-[50rem] -translate-x-1/2 bg-[#04748B]/15 blur-[180px] rounded-full"></div>
       <div className="absolute bottom-0 right-0 w-[40rem] h-[40rem] bg-[#C85038]/15 blur-[160px] rounded-full"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -195,92 +205,92 @@ function PainPoints() {
           </h2>
         </motion.div>
 
-        {/* Step style layout */}
         <div className="relative flex flex-col gap-20">
-          {painCards.map((card, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -80 : 80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.15 }}
-              className={`relative flex flex-col md:flex-row ${
-                index % 2 !== 0 ? "md:flex-row-reverse" : ""
-              } items-center gap-12`}
-            >
-              {/* Number rail */}
-              <div className="absolute left-1/2 -top-12 -translate-x-1/2 md:hidden text-6xl font-black text-black/5">
-                {index + 1}
-              </div>
-
-              {/* Icon block */}
-              <div
-                className={`shrink-0 w-36 h-36 rounded-[2.5rem]
-                bg-gradient-to-br ${card.gradient}
-                flex items-center justify-center text-6xl text-white
-                shadow-[0_30px_60px_-15px_rgba(0,0,0,0.35)]
-                relative`}
+          {painCards.map((card, index) => {
+            const Icon = card.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -80 : 80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: index * 0.15 }}
+                className={`relative flex flex-col md:flex-row ${
+                  index % 2 !== 0 ? "md:flex-row-reverse" : ""
+                } items-center gap-12`}
               >
-                {card.icon}
-                <span className="absolute inset-0 rounded-[2.5rem] ring-2 ring-white/30"></span>
-              </div>
-
-              {/* Content */}
-              <div className="relative bg-white/80 backdrop-blur-2xl border border-black/10 rounded-[2.5rem] p-10 shadow-2xl max-w-xl">
-                <span className="absolute -top-6 -left-6 hidden md:flex w-14 h-14 rounded-full bg-[#023042] text-white items-center justify-center font-bold text-xl shadow-xl">
+                <div className="absolute left-1/2 -top-12 -translate-x-1/2 md:hidden text-6xl font-black text-black/5">
                   {index + 1}
-                </span>
+                </div>
 
-                <h3 className="text-2xl md:text-3xl font-extrabold text-[#023042] mb-4">
-                  {card.title}
-                </h3>
+                <div
+                  className={`shrink-0 w-36 h-36 rounded-[2.5rem]
+                  bg-gradient-to-br ${card.gradient}
+                  flex items-center justify-center
+                  shadow-[0_30px_60px_-15px_rgba(0,0,0,0.35)]
+                  relative`}
+                >
+                  <Icon className="text-6xl text-white" />
+                  <span className="absolute inset-0 rounded-[2.5rem] ring-2 ring-white/30"></span>
+                </div>
 
-                <p className="text-gray-600 text-lg leading-relaxed">
-                  {card.text}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                <div className="relative bg-white/80 backdrop-blur-2xl border border-black/10 rounded-[2.5rem] p-10 shadow-2xl max-w-xl">
+                  <span className="absolute -top-6 -left-6 hidden md:flex w-14 h-14 rounded-full bg-[#023042] text-white items-center justify-center font-bold text-xl shadow-xl">
+                    {index + 1}
+                  </span>
+
+                  <h3 className="text-2xl md:text-3xl font-extrabold text-[#023042] mb-4">
+                    {card.title}
+                  </h3>
+
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    {card.text}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
+
 /* ================= WHY HIMS ================= */
 
 function WhyHims() {
   const items = [
     {
-      icon: "💻",
+      icon: FaLaptopMedical,
       title: "Complete Digitization",
       desc: "End-to-end hospital workflows with zero paperwork.",
       color: "from-[#053C50] to-[#04748B]",
       side: "left",
     },
     {
-      icon: "📊",
+      icon: FaChartLine,
       title: "Smart Analytics",
       desc: "Live dashboards for faster, confident management decisions.",
       color: "from-[#04748B] to-[#053C50]",
       side: "right",
     },
     {
-      icon: "🔐",
+      icon: FaLock,
       title: "Secure & Compliant",
       desc: "ABHA ready, role-based access & encrypted data.",
       color: "from-[#023042] to-[#053C50]",
       side: "left",
     },
     {
-      icon: "⚡",
+      icon: FaBolt,
       title: "Faster Operations",
       desc: "Drastically reduce patient waiting time.",
       color: "from-[#C85038] to-[#9C4436]",
       side: "right",
     },
     {
-      icon: "🚀",
+      icon: FaRocket,
       title: "Scalable Growth",
       desc: "Works seamlessly from clinics to hospital chains.",
       color: "from-[#053C50] to-[#023042]",
@@ -290,15 +300,12 @@ function WhyHims() {
 
   return (
     <section className="relative py-32 overflow-hidden bg-[#053C50]">
-      {/* Background pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#04748B14_1px,transparent_1px),linear-gradient(to_bottom,#04748B14_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
-      {/* Ambient glows */}
       <div className="absolute top-1/3 left-0 w-[30rem] h-[30rem] bg-[#04748B]/20 blur-[140px] rounded-full"></div>
       <div className="absolute bottom-1/4 right-0 w-[30rem] h-[30rem] bg-[#C85038]/20 blur-[140px] rounded-full"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Heading */}
         <div className="text-center max-w-3xl mx-auto">
           <p className="inline-block px-5 py-1.5 rounded-full bg-[#04748B]/10 text-[#04748B] font-semibold tracking-wide mb-5">
             One Platform. Total Control.
@@ -314,49 +321,49 @@ function WhyHims() {
           </p>
         </div>
 
-        {/* Vertical journey layout */}
         <div className="relative mt-24">
           <div className="absolute left-1/2 top-0 h-full w-[2px] bg-gradient-to-b from-[#04748B]/30 via-[#053C50]/30 to-[#C85038]/30 hidden md:block"></div>
 
           <div className="flex flex-col gap-20">
-            {items.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`flex flex-col md:flex-row items-center gap-12 ${
-                  item.side === "right" ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                {/* Icon node */}
+            {items.map((item, index) => {
+              const Icon = item.icon;
+              return (
                 <motion.div
-                  whileHover={{ scale: 1.15, rotate: 8 }}
-                  className={`relative w-28 h-28 rounded-full bg-gradient-to-tr ${item.color}
-                              flex items-center justify-center text-5xl text-white shadow-2xl`}
+                  key={index}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className={`flex flex-col md:flex-row items-center gap-12 ${
+                    item.side === "right" ? "md:flex-row-reverse" : ""
+                  }`}
                 >
-                  {item.icon}
-                  <div className="absolute inset-0 rounded-full bg-white/20 blur-xl"></div>
+                  <motion.div
+                    whileHover={{ scale: 1.15, rotate: 8 }}
+                    className={`relative w-28 h-28 rounded-full bg-gradient-to-tr ${item.color}
+                                flex items-center justify-center shadow-2xl`}
+                  >
+                    <Icon className="text-5xl text-white" />
+                    <div className="absolute inset-0 rounded-full bg-white/20 blur-xl"></div>
+                  </motion.div>
+
+                  <div
+                    className="bg-white/80 backdrop-blur-xl rounded-3xl p-10 
+                               shadow-xl border border-[#053C50]/10 max-w-xl"
+                  >
+                    <h3 className="text-2xl md:text-3xl font-bold text-[#053C50] mb-4">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-[#023042]/80 text-lg leading-relaxed">
+                      {item.desc}
+                    </p>
+
+                    <div className="mt-6 h-[3px] w-24 bg-gradient-to-r from-[#04748B] to-[#C85038] rounded-full"></div>
+                  </div>
                 </motion.div>
-
-                {/* Content card */}
-                <div
-                  className="bg-white/80 backdrop-blur-xl rounded-3xl p-10 
-                             shadow-xl border border-[#053C50]/10 max-w-xl"
-                >
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#053C50] mb-4">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-[#023042]/80 text-lg leading-relaxed">
-                    {item.desc}
-                  </p>
-
-                  <div className="mt-6 h-[3px] w-24 bg-gradient-to-r from-[#04748B] to-[#C85038] rounded-full"></div>
-                </div>
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -364,24 +371,25 @@ function WhyHims() {
   );
 }
 
+
 /* ================= AI SECTION ================= */
 
 function AISection() {
   const cards = [
     {
-      icon: "🤖",
+      icon: <FaRobot />,
       title: "Smart Automation",
       desc: "Automated billing, discharge summaries and alerts.",
       glow: "bg-[#04748B]",
     },
     {
-      icon: "🧠",
+      icon: <FaBrain />,
       title: "Predictive Insights",
       desc: "Identify trends, revenue leaks and patient behavior.",
       glow: "bg-[#053C50]",
     },
     {
-      icon: "⚙️",
+      icon: <FaCogs />,
       title: "Decision Support",
       desc: "AI dashboards for faster management decisions.",
       glow: "bg-[#C85038]",
@@ -390,6 +398,7 @@ function AISection() {
 
   return (
     <section className="relative py-32 overflow-hidden bg-gradient-to-b from-[#F8FBFC] via-white to-[#F1F7F9]">
+      
       {/* Animated background grid */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,#04748B1A_1px,transparent_0)] bg-[size:28px_28px] opacity-40"></div>
 
@@ -398,6 +407,7 @@ function AISection() {
       <div className="absolute bottom-1/4 right-1/4 w-[26rem] h-[26rem] bg-[#C85038]/20 rounded-full blur-[140px]"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
+        
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
           <p className="inline-block px-4 py-1 rounded-full bg-[#04748B]/10 text-[#04748B] font-semibold tracking-wide mb-4">
@@ -415,7 +425,7 @@ function AISection() {
           </p>
         </div>
 
-        {/* Timeline-style cards */}
+        {/* Timeline Cards */}
         <div className="relative mt-24">
           <div className="absolute left-1/2 top-0 h-full w-[2px] bg-gradient-to-b from-[#04748B]/40 via-[#053C50]/40 to-[#C85038]/40 hidden md:block"></div>
 
@@ -431,21 +441,21 @@ function AISection() {
                   index % 2 === 0 ? "md:flex-row-reverse" : ""
                 }`}
               >
-                {/* Icon bubble */}
+                
+                {/* Icon Bubble */}
                 <motion.div
                   whileHover={{ scale: 1.15, rotate: 6 }}
                   className={`relative w-28 h-28 rounded-full ${card.glow}
-                              flex items-center justify-center text-5xl text-white shadow-2xl`}
+                  flex items-center justify-center text-5xl text-white shadow-2xl`}
                 >
                   {card.icon}
                   <div className="absolute inset-0 rounded-full blur-xl opacity-60 bg-white/20"></div>
                 </motion.div>
 
                 {/* Content */}
-                <div
-                  className="bg-white/80 backdrop-blur-xl border border-[#053C50]/10 
-                                rounded-3xl p-8 md:p-10 shadow-xl max-w-xl"
-                >
+                <div className="bg-white/80 backdrop-blur-xl border border-[#053C50]/10 
+                rounded-3xl p-8 md:p-10 shadow-xl max-w-xl">
+
                   <h3 className="text-2xl md:text-3xl font-bold text-[#053C50] mb-4">
                     {card.title}
                   </h3>
@@ -456,6 +466,7 @@ function AISection() {
 
                   <div className="mt-6 h-[3px] w-20 bg-gradient-to-r from-[#04748B] to-[#C85038] rounded-full"></div>
                 </div>
+
               </motion.div>
             ))}
           </div>
@@ -465,6 +476,9 @@ function AISection() {
   );
 }
 
+
+
+
 /* ================= PROCESS SECTION ================= */
 function ProcessSection() {
   const steps = [
@@ -472,30 +486,31 @@ function ProcessSection() {
       number: "01",
       title: "Setup",
       text: "Quick onboarding & configuration",
-      icon: "🛠️",
+      icon: <FaTools />,
     },
     {
       number: "02",
       title: "Training",
       text: "Staff training & data migration",
-      icon: "📚",
+      icon: <FaBookOpen />,
     },
     {
       number: "03",
       title: "Go Live",
       text: "Start operations digitally",
-      icon: "🚀",
+      icon: <FaRocket />,
     },
     {
       number: "04",
       title: "Scale",
       text: "Grow with advanced modules",
-      icon: "📈",
+      icon: <FaChartLine />,
     },
   ];
 
   return (
     <section className="relative py-36 bg-[#053C50] overflow-hidden">
+      
       {/* Animated background glow */}
       <div className="absolute w-[700px] h-[700px] bg-cyan-400/20 blur-[180px] -top-40 -left-40 rounded-full" />
       <div className="absolute w-[700px] h-[700px] bg-orange-400/20 blur-[180px] -bottom-40 -right-40 rounded-full" />
@@ -526,6 +541,7 @@ function ProcessSection() {
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
+                
                 {/* Center Dot */}
                 <div
                   className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-20 h-20 rounded-full 
@@ -541,10 +557,10 @@ function ProcessSection() {
                   border border-white/10 rounded-[40px] p-14 shadow-2xl
                   hover:-translate-y-4 transition-all duration-700 overflow-hidden"
                 >
-                  {/* Hover glow */}
                   <div className="absolute -inset-6 bg-gradient-to-r from-cyan-400/20 to-orange-400/20 blur-3xl opacity-0 group-hover:opacity-100 transition"></div>
 
                   <div className="relative z-10 text-center md:text-left">
+                    
                     {/* Mobile number */}
                     <div
                       className="md:hidden w-16 h-16 mx-auto mb-6 rounded-full
@@ -555,7 +571,9 @@ function ProcessSection() {
                     </div>
 
                     {/* Icon */}
-                    <div className="text-6xl mb-6">{step.icon}</div>
+                    <div className="text-6xl mb-6 text-white">
+                      {step.icon}
+                    </div>
 
                     {/* Title */}
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
@@ -566,6 +584,7 @@ function ProcessSection() {
                     <p className="text-slate-300 leading-relaxed text-lg">
                       {step.text}
                     </p>
+
                   </div>
                 </div>
               </motion.div>
@@ -577,23 +596,28 @@ function ProcessSection() {
   );
 }
 
+
+
+
 /* ================= WHO IT'S FOR ================= */
 
 function WhoItsFor() {
   const items = [
-    { icon: "🏥", text: "Hospitals" },
-    { icon: "🏨", text: "Clinics" },
-    { icon: "🧪", text: "Diagnostics" },
-    { icon: "🌐", text: "Healthcare Chains" },
+    { icon: <FaHospital />, text: "Hospitals" },
+    { icon: <FaClinicMedical />, text: "Clinics" },
+    { icon: <FaFlask />, text: "Diagnostics" },
+    { icon: <FaGlobe />, text: "Healthcare Chains" },
   ];
 
   return (
     <section className="relative py-32 overflow-hidden">
+      
       {/* Background mesh glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#04748B20,transparent_40%),radial-gradient(circle_at_bottom_right,#C8503820,transparent_45%)]" />
       <div className="absolute top-1/2 left-1/2 w-[40rem] h-[40rem] -translate-x-1/2 -translate-y-1/2 bg-[#053C50]/10 blur-[160px] rounded-full" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
+        
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -626,6 +650,7 @@ function WhoItsFor() {
               whileHover={{ scale: 1.04 }}
               className="relative group"
             >
+              
               {/* Gradient border */}
               <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-r from-[#04748B] via-[#C85038] to-[#053C50] opacity-0 group-hover:opacity-100 transition duration-500 blur-sm" />
 
@@ -635,6 +660,7 @@ function WhoItsFor() {
                 border border-gray-200 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.25)]
                 flex items-center gap-8"
               >
+                
                 {/* Icon */}
                 <div
                   className="relative w-24 h-24 flex items-center justify-center rounded-full text-5xl
@@ -654,14 +680,19 @@ function WhoItsFor() {
                     real-time insights tailored for {item.text.toLowerCase()}.
                   </p>
                 </div>
+
               </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
 }
+
+
+
 
 /* ================= FINAL CTA ================= */
 
