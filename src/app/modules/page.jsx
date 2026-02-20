@@ -302,10 +302,7 @@ function ClinicalModules() {
         </div>
 
         {/* scroll cue */}
-        <div className="mt-20 flex flex-col items-center gap-2 text-[#04748B]/60 text-xs tracking-widest uppercase">
-          <span>Scroll</span>
-          <div className="w-1 h-8 rounded-full bg-gradient-to-b from-[#04748B] to-[#C85038]"></div>
-        </div>
+        
       </div>
     </section>
   );

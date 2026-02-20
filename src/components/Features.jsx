@@ -158,7 +158,7 @@ export default function FeaturesPage() {
               className="inline-block mb-6 px-6 py-3 rounded-full
               bg-[#053C50]/80 border border-[#04748B]/60 text-[#C85038] font-semibold"
             >
-              🏥 Hospital Management System
+               Hospital Management System
             </motion.span>
 
             <motion.h1
@@ -378,16 +378,8 @@ export default function FeaturesPage() {
         className="absolute w-[520px] h-[520px]"
       >
 
-        {/* WEB */}
-        <motion.div
-          variants={{ hidden:{opacity:0,scale:0.8}, visible:{opacity:1,scale:1} }}
-          className="absolute top-0 left-1/2 -translate-x-1/2 group"
-        >
-          <div className="w-28 h-28 rounded-3xl bg-white/5 backdrop-blur-xl border border-[#04748B]/30 flex flex-col items-center justify-center shadow-xl hover:scale-110 transition">
-            <FaGlobe className="w-8 h-8 text-[#04748B] mb-2" />
-            <span className="text-sm font-semibold text-[#023042]">Web</span>
-          </div>
-        </motion.div>
+       
+      
 
         {/* ANDROID */}
         <motion.div
